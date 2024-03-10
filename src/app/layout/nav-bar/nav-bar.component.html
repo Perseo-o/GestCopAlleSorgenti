@@ -1,0 +1,49 @@
+<div >
+    <header class="container">
+      <div style="display: flex">
+  
+
+            <div class="corner-left">
+                <div class="logo"></div>
+                <div class="name"><b>Alle Sorgenti</b> <p>Progetto A</p></div>
+            </div>
+            <!--<p 
+            routerLink="home" 
+            matTooltip="Home"
+            class="nomeAzienda">
+            OfficeOasis
+            </p>-->
+  
+        </div>
+
+        <div class="center">
+            <input 
+            matInput
+            type="text"
+            formControlName="searchValue"
+            class="search-bar-input"
+            placeholder="Cerca qui i prodotti che ti interessano"
+            name="searchInput"
+            />
+            
+            <div class="search-btn">
+                <div class="filter">
+                    <mat-icon>tune</mat-icon>
+                </div>
+
+                <div class="search">
+                    <mat-icon>search</mat-icon>
+                </div>
+            </div>
+        </div>
+
+        <div class="corner-right">
+            
+            <button mat-flat-button class="add">Aggiungi</button>
+            </div>
+  
+    </header>
+  
+  
+  </div>
+  <router-outlet></router-outlet>
