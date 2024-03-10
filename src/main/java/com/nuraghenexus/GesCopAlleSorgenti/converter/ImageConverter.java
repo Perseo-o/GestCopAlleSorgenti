@@ -18,7 +18,8 @@ public class ImageConverter {
                     imageDTO.getId(),
                     imageDTO.getName(),
                     imageDTO.getType(),
-                    imageDTO.getFilePath()
+                    imageDTO.getFilePath(),
+                    userConverter.toEntity(imageDTO.getUserDTO())
             );
         }
         return image;
@@ -31,7 +32,8 @@ public class ImageConverter {
                     image.getId(),
                     image.getName(),
                     image.getType(),
-                    image.getFilePath()
+                    image.getFilePath(),
+                    userConverter.toDTO(image.getUser())
             );
         }
         return imageDTO;

@@ -20,7 +20,6 @@ public class User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     private Site site;
     private String name;
     private String surname;
