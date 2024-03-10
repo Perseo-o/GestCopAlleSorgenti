@@ -1,4 +1,7 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { UserDTO } from '../../../models/user.model';
+import { UserService } from '../../../services/user.service';
+import { Option, SearchRequest } from '../../../models/requestBody/searchRequest.model';
 
 /**
  * Component responsible for displaying the home page.
@@ -6,60 +9,43 @@ import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  animations: [
-  ]
+  styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit {
  
-  /**
-   * Constructs the HomeComponent.
-   * @param productService The product service.
-   * @param purchaseHistoryService The purchase history service.
-   */
+  
+  users: UserDTO[] = [];
+
+  searchRequest: SearchRequest = {
+    name: "",
+    id: 0,
+    option:Option.NAME
+  }
   constructor(
+    private userService:UserService
   ) {}
 
   /** Initializes the component. */
   ngOnInit(): void {
-
-
-
-    // Call the function to handle window resize
-    this.handleWindowResize(); 
-    this.asideWidthSetter();
+    this.SearchUsers();
   }
 
-  /**
-   * Sets the width of the aside panel dynamically based on its content.
-   */
-  asideWidthSetter() {
-    const component2 = document.getElementById("aside-w-home");
-    const asideWidthTaker2 = component2 ? component2.offsetWidth : null;
-    document.documentElement.style.setProperty('--aside-width-home-from-drawer', asideWidthTaker2 + "px");
-  }
-
-
-
-  
-  
-  @HostListener('window:resize', ['$event'])
-  handleWindowResize(event?: any) {
-    const asideTab = document.querySelector('.aside-tab');
-    const rightSideCards = document.querySelector('.cards-first');
-    if (window.innerWidth <= 1530) {
-      //change css on width change
-      rightSideCards?.classList.add('right-side-cards');
-      // Hide the div when width is 1539 or less
-      asideTab?.classList.add('hidden');
-    } else {
-      // Show the div when width is more than 1539
-      asideTab?.classList.remove('hidden');
-      rightSideCards?.classList.remove('right-side-cards');
+  SearchUsers() : any {
+    
+    this.userService.search(this.searchRequest).subscribe({
+      next: (res) => {
+      if(res){
+        if(res){
+          this.users = [];
+          this.users = res;
+        }
+      }
+      return this.users;
     }
-  }
+      
+  });
+}
+  
+  
 
-  /** Cleans up subscriptions when the component is destroyed */
-  ngOnDestroy() {
-  }
 }

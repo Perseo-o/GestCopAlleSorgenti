@@ -7,6 +7,7 @@ import { HomeComponent } from './layout/component/home/home.component';
 import { CardComponent } from './layout/component/card/card.component';
 import { AngularMaterialModule } from './utils/metrial-module';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()

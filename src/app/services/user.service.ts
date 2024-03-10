@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AbstractService } from './abstract.service';
 import { Observable } from 'rxjs';
 import { UserDTO } from '../models/user.model';
+import { SearchRequest } from '../models/requestBody/searchRequest.model';
 
 @Injectable({ providedIn: 'root' })
 export class UserService extends AbstractService<UserDTO>{
@@ -15,4 +16,7 @@ export class UserService extends AbstractService<UserDTO>{
 
 
   
+  search(req: SearchRequest): Observable<UserDTO[]> {
+    return this.http.post<UserDTO[]>(`${this.baseUrl}search`, req);
+  }
 }
