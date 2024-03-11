@@ -7,12 +7,20 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
     background-color: #161CB0;
 }
+
+.corner-left:hover{
+    
+  cursor: pointer;
+}
+
+
 .corner-left{
     height: 80px;
-    width: 600px;
+    width: 100px;
+    margin-left: 250px;
+    margin-right: 250px;
     display: flex;
     justify-content: center;
     align-items: center;

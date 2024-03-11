@@ -4,6 +4,6 @@ export interface SearchRequest{
     option: Option;
 }
 export enum Option {
-    NAME = 'Nome',
+    NAME = 'NAME',
     ID = 'ID'
 }

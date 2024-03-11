@@ -3,7 +3,7 @@ import { LowyerDTO } from "./lowyer.model";
 
 export interface UserDTO {
     id: number;
-    site: string;
+    site: Site;
     name: string;
     surname:string;
     nationState:string;
@@ -16,4 +16,9 @@ export interface UserDTO {
     idVestanet:string;
     lowyer:LowyerDTO;
     externalStructure: ExternalStructureDTO;
+}
+
+export enum Site {
+    COP_SORG_IGL = 'COP_SORG_IGL',
+    COP_SORG_MONT = 'COP_SORG_MONT'
 }

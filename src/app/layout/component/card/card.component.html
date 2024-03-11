@@ -1,13 +1,13 @@
 <div class="card" 
-
+(click)="goToDetail()"
 >
     <div class="image">
 
-    </div> (click)="goToDetail()"
+    </div> 
     <div class="contenuto">
-        <div class="name">{{ user.name }}</div>
-        <div class="surname">{{user.surname}}</div>
-        <div class="Bdate">{{user.birthDate}}</div>
+        <div class="name"><b>{{ user.name }}</b></div>
+        <div class="surname"><b>{{user.surname}}</b></div>
+        <div class="Bdate">{{ formattedBirthDate }}</div>
         <div class="id">{{user.id}}</div>
     </div>
 </div>

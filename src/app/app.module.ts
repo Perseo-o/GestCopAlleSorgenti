@@ -8,22 +8,27 @@ import { CardComponent } from './layout/component/card/card.component';
 import { AngularMaterialModule } from './utils/metrial-module';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
+import { UserDetailComponent } from './layout/component/user-detail/user-detail.component'
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CardComponent,
-    NavBarComponent
+    NavBarComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularMaterialModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

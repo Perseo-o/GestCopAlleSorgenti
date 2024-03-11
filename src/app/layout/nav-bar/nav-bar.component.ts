@@ -26,4 +26,7 @@ export class NavBarComponent implements  OnInit {
     document.documentElement.style.setProperty('--company-name-width', companyNameWidth + "px");
   }
 
+  goToDetail() {
+    this.router.navigate(['GestCopAlleSorgenti/home']);
+  }
 }

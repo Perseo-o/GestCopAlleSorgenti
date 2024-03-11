@@ -1,0 +1,29 @@
+<div class="body">
+
+    <button mat-flat-button class="create-pdf" (click)="convert()"><b>Esporta in pdf</b></button> 
+
+    <div class="scheda" id="scheda">
+        <div class="title"><b>ALLE SORGENTI - PROGETTO A</b></div>
+        <div class="sub-title"><b>SCHEDA OSPITE</b></div>
+
+        <div class="contenuto">
+            <p>ID OSPITE: <b>{{user.id}}</b></p>
+            <p>NOME: <b>{{user.name}}</b></p>
+            <p>COGNOME: <b>{{user.surname}}</b></p>
+            <p>STATO DI NASCITA: <b>{{ user.nationState }}</b></p>
+            <p>NAZIONALITA': <b>{{user.nationality}}</b></p>
+            <p>DATA DI NASCITA: <b>{{formattedBirthDate}}</b></p>
+            <p>CODICE FISCALE: <b>{{user.codFiscal}}</b></p>
+            <p>DATA DI INGRESSO IN ITALIA: <b>{{formattedDateIngIta}}</b></p>
+            <p>DATA DI INGRESSO IN STRUTTURA: <b>{{formattedDateIngStrut}}</b></p>
+            <div class="message" *ngIf="user.externalStructure">Struttura precedente:</div>
+            <p *ngIf="user.externalStructure">NUMERO RIFERIMENTO: <b>{{user.externalStructure}}</b></p>
+            <p>RESIDENZA: <b>{{user.site}}</b></p>
+            <p *ngIf="user.legalSituation">SITUAZIONE GIURIDICA: <b>{{user.legalSituation}}</b></p>
+            <p *ngIf="user.lowyer">AVVOCATO: <b>{{user.lowyer.name}}</b></p>
+            <p *ngIf="user.lowyer"> {{user.lowyer.contDetails}}</p>
+            <p>ID VESTANET: <b>{{user.idVestanet}}</b></p>
+        </div>
+    </div>
+</div>
+  
