@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { LowyerDTO } from '../models/lowyer.model';
 
 @Injectable({ providedIn: 'root' })
-export class lowyerService extends AbstractService<LowyerDTO>{
+export class lawyerService extends AbstractService<LowyerDTO>{
   
   constructor(http: HttpClient) {
     super(http);

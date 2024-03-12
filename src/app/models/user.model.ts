@@ -14,8 +14,8 @@ export interface UserDTO {
     dateIngStrut:string;
     legalSituation:string;
     idVestanet:string;
-    lowyer:LowyerDTO;
-    externalStructure: ExternalStructureDTO;
+    lawyers:LowyerDTO[];
+    externalStructures: ExternalStructureDTO[];
 }
 
 export enum Site {
