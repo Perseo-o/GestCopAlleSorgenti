@@ -18,7 +18,9 @@ public class UserService extends AbstractService<User, UserDTO> {
     @Autowired
     private UserRepository repository;
 
+
     public List<UserDTO> Search(SearchRequestDTO searchRequest){
+
         if (searchRequest.getOption() != OptionSearch.NAME){
             return repository.findAll().stream().map(converter::toDTO)
                     .filter(User -> searchRequest.getId().equals(User.getId()))
@@ -26,7 +28,7 @@ public class UserService extends AbstractService<User, UserDTO> {
                     .collect(Collectors.toList());
         }else {
             return repository.findAll().stream().map(converter::toDTO)
-                    .filter(User -> User.getName().contains(searchRequest.getName()))
+                    .filter(User -> (User.getName()+' '+User.getSurname()).contains(searchRequest.getName()))
                     .sorted(Comparator.comparing(UserDTO::getName))
                     .collect(Collectors.toList());
         }

@@ -1,33 +1,33 @@
 package com.nuraghenexus.GesCopAlleSorgenti.converter;
 
-import com.nuraghenexus.GesCopAlleSorgenti.dto.LowyerDTO;
-import com.nuraghenexus.GesCopAlleSorgenti.model.Lowyer;
+import com.nuraghenexus.GesCopAlleSorgenti.dto.LawyerDTO;
+import com.nuraghenexus.GesCopAlleSorgenti.model.Lawyer;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LowyerConverter extends AbstractConverter<Lowyer, LowyerDTO> {
+public class LawyerConverter extends AbstractConverter<Lawyer, LawyerDTO> {
 
     @Override
-    public Lowyer toEntity(LowyerDTO lowyerDTO) {
-        Lowyer lowyer = null;
-        if (lowyerDTO != null) {
-            lowyer = new Lowyer(
-                    lowyerDTO.getId(),
-                    lowyerDTO.getName(),
-                    lowyerDTO.getContDetails());
+    public Lawyer toEntity(LawyerDTO lawyerDTO) {
+        Lawyer lawyer = null;
+        if (lawyerDTO != null) {
+            lawyer = new Lawyer(
+                    lawyerDTO.getId(),
+                    lawyerDTO.getName(),
+                    lawyerDTO.getContDetails());
         }
-        return lowyer;
+        return lawyer;
     }
 
     @Override
-    public LowyerDTO toDTO(Lowyer lowyer) {
-        LowyerDTO lowyerDTO = null;
-        if (lowyer != null) {
-            lowyerDTO = new LowyerDTO(
-                    lowyer.getId(),
-                    lowyer.getName(),
-                    lowyer.getContDetails());
+    public LawyerDTO toDTO(Lawyer lawyer) {
+        LawyerDTO lawyerDTO = null;
+        if (lawyer != null) {
+            lawyerDTO = new LawyerDTO(
+                    lawyer.getId(),
+                    lawyer.getName(),
+                    lawyer.getContDetails());
         }
-        return lowyerDTO;
+        return lawyerDTO;
     }
 }

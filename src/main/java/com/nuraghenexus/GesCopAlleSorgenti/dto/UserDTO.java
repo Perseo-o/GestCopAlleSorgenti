@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -20,14 +20,14 @@ public class UserDTO {
     private String surname;
     private String nationState;
     private String nationality;
-    private Date birthDate;
+    private LocalDateTime birthDate;
     private String codFiscal;
-    private Date dateIngIta;
-    private Date dateIngStrut;
+    private LocalDateTime dateIngIta;
+    private LocalDateTime dateIngStrut;
     private String legalSituation;
     private String idVestanet;
     private List<ExternalStructureDTO> externalStructureDTOList;
-    private List<LowyerDTO> lowyerDTOList;
+    private List<LawyerDTO> lawyerDTOList;
 
 
 }

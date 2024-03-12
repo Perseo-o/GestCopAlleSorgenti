@@ -9,7 +9,7 @@ import com.nuraghenexus.GesCopAlleSorgenti.model.User;
 public class UserConverter extends AbstractConverter<User, UserDTO> {
 
     @Autowired
-    private LowyerConverter lowyerConverter;
+    private LawyerConverter lawyerConverter;
     @Autowired
     private ExternalStructureConverter externalStructureConverter;
 
@@ -31,7 +31,7 @@ public class UserConverter extends AbstractConverter<User, UserDTO> {
                     userDTO.getLegalSituation(),
                     userDTO.getIdVestanet(),
                     externalStructureConverter.toEntityList(userDTO.getExternalStructureDTOList()),
-                    lowyerConverter.toEntityList(userDTO.getLowyerDTOList()));
+                    lawyerConverter.toEntityList(userDTO.getLawyerDTOList()));
         }
         return user;
     }
@@ -54,7 +54,7 @@ public class UserConverter extends AbstractConverter<User, UserDTO> {
                     user.getLegalSituation(),
                     user.getIdVestanet(),
                     externalStructureConverter.toDTOList(user.getExternalStructureList()),
-                    lowyerConverter.toDTOList(user.getLowyerList()));
+                    lawyerConverter.toDTOList(user.getLawyerList()));
         }
         return userDTO;
     }

@@ -1,9 +1,9 @@
 package com.nuraghenexus.GesCopAlleSorgenti.converter;
 
 import com.nuraghenexus.GesCopAlleSorgenti.dto.ExternalStructureDTO;
-import com.nuraghenexus.GesCopAlleSorgenti.dto.LowyerDTO;
+import com.nuraghenexus.GesCopAlleSorgenti.dto.LawyerDTO;
 import com.nuraghenexus.GesCopAlleSorgenti.model.ExternalStructure;
-import com.nuraghenexus.GesCopAlleSorgenti.model.Lowyer;
+import com.nuraghenexus.GesCopAlleSorgenti.model.Lawyer;
 import org.springframework.stereotype.Component;
 
 @Component

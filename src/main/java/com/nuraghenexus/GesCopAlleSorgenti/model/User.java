@@ -3,11 +3,10 @@ package com.nuraghenexus.GesCopAlleSorgenti.model;
 import com.nuraghenexus.GesCopAlleSorgenti.model.enumeration.Site;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -25,10 +24,10 @@ public class User{
     private String surname;
     private String nationState;
     private String nationality;
-    private Date birthDate;
+    private LocalDateTime birthDate;
     private String codFiscal;
-    private Date dateIngIta;
-    private Date dateIngStrut;
+    private LocalDateTime dateIngIta;
+    private LocalDateTime dateIngStrut;
     private String legalSituation;
     private String idVestanet;
 
@@ -36,7 +35,7 @@ public class User{
     private List<ExternalStructure> externalStructureList;
 
     @ManyToMany
-    private List<Lowyer> lowyerList;
+    private List<Lawyer> lawyerList;
 
 
 
