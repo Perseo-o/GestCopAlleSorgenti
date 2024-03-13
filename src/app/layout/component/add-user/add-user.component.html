@@ -1,0 +1,93 @@
+<div class="body">
+
+    <button mat-flat-button color="primary" class="add-user" (click)="add()"><b>Aggiungi nuovo ospite</b></button> 
+
+    <div class="scheda">
+        <div class="title"><b>ALLE SORGENTI - PROGETTO A</b></div>
+        <div class="sub-title"><b>SCHEDA NUOVO OSPITE</b></div>
+
+        <div class="contenuto">
+            <form>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>NOME</mat-label>
+                    <input matInput type="text" name="name" formControlName="name">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>COGNOME</mat-label>
+                    <input matInput type="text" name="surname" formControlName="surname">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>STATO DI NASCITA</mat-label>
+                    <input matInput type="text" name="nationState" formControlName="nationState">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>NAZIONALITA'</mat-label>
+                    <input matInput type="text" name="nationality" formControlName="nationality">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>DATA DI NASCITA</mat-label>
+                    <input matInput type="date" name="birthDate" formControlName="birthDate">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>CODICE FISCALE</mat-label>
+                    <input matInput type="text" name="codFiscal" formControlName="codFiscal">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>DATA DI INGRESSO IN ITALIA</mat-label>
+                    <input matInput type="date" name="ingIta" formControlName="ingIta">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>DATA DI INGRESSO IN STRUTTURA</mat-label>
+                    <input matInput type="date" name="ingStrut" formControlName="ingStrut">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>RESIDENZA</mat-label>
+                    <mat-select>
+                        <mat-option value="Site.COP_SORG_IGL">VIA IGLESIAS</mat-option>
+                        <mat-option value="Site.COP_SORG_MONT">VIA DEL MONTE</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>ID VESTANET</mat-label>
+                    <input matInput type="text" name="idVestanet" formControlName="idVestanet">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>SITUAZIONE GIURIDICA</mat-label>
+                    <input matInput type="text" name="legalSituation" style="background-color: white;" formControlName="legalSituation">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>AVVOCATO</mat-label>
+                    <mat-select>
+                        <mat-option value="Site.COP_SORG_IGL">TODOO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>STRUTTURE PRECEDENTI</mat-label>
+                    <mat-select>
+                        <mat-option value="Site.COP_SORG_IGL">TODOO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                
+<!--mdc-text-field--outlined   
+
+
+
+                <p>NUMERO RIFERIMENTO:        <input  type="text">       </p>-->
+            </form>
+        </div>
+        
+    </div>
+</div>

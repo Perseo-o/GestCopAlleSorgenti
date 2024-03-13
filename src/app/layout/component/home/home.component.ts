@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener, OnDestroy, Input } from '@angular/core';
 import { UserDTO } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
 import { Option, SearchRequest } from '../../../models/requestBody/searchRequest.model';
@@ -13,13 +13,16 @@ import { Option, SearchRequest } from '../../../models/requestBody/searchRequest
 })
 export class HomeComponent implements OnInit {
  
+  @Input()
+  text!:String;
   
   users: UserDTO[] = [];
 
   searchRequest: SearchRequest = {
     name: "",
     id: 0,
-    option:Option.NAME
+    option:Option.NAME,
+    active: true
   }
   constructor(
     private userService:UserService

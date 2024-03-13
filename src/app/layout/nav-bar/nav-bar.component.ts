@@ -1,6 +1,10 @@
 import { Component,  OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { Option, SearchRequest } from '../../models/requestBody/searchRequest.model';
+
+
+
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -8,6 +12,15 @@ import { Router } from '@angular/router';
 })
 export class NavBarComponent implements  OnInit {
 
+  searchValue: any = null;
+
+  searchRequest: SearchRequest = {
+    name: this.searchValue,
+    id: 0,
+    option:Option.NAME,
+    active: true
+  }
+  
   constructor(
     protected router: Router
   ) {
@@ -15,18 +28,17 @@ export class NavBarComponent implements  OnInit {
 
   /** Initializes the component */
   ngOnInit(): void {
-    this.searchbbarWidthSetter();
-
+    
+    
   }
 
-
-  searchbbarWidthSetter(){
-    const component = document.getElementById("nomeAzienda");
-    const companyNameWidth = component ? component.offsetWidth : null;
-    document.documentElement.style.setProperty('--company-name-width', companyNameWidth + "px");
-  }
-
-  goToDetail() {
+  goHome() {
     this.router.navigate(['GestCopAlleSorgenti/home']);
+  }
+
+
+
+  goToAdd(){
+    this.router.navigate(['GestCopAlleSorgenti/add-user']);
   }
 }

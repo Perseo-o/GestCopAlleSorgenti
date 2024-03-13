@@ -9,7 +9,12 @@ import { AngularMaterialModule } from './utils/metrial-module';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
-import { UserDetailComponent } from './layout/component/user-detail/user-detail.component'
+import { UserDetailComponent } from './layout/component/user-detail/user-detail.component';
+import { AddUserComponent } from './layout/component/add-user/add-user.component'
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -18,13 +23,17 @@ import { UserDetailComponent } from './layout/component/user-detail/user-detail.
     HomeComponent,
     CardComponent,
     NavBarComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AngularMaterialModule,
     HttpClientModule,
+    MatFormFieldModule, 
+    MatInputModule, 
+    BrowserAnimationsModule, 
   ],
   providers: [
     provideClientHydration(),
