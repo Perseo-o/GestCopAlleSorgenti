@@ -45,6 +45,28 @@ export class UserDetailComponent implements OnInit {
     });
   }
 
+  
+  disable() {
+    this.user.active = false;
+    this.userService.update(this.user).subscribe({
+      next: (updatedUser: UserDTO) => {
+          console.log('Utente aggiornato:', updatedUser);
+          // Altre azioni se necessario
+      }
+    });
+  }
+
+  enable() {
+    this.user.active = true;
+    this.userService.update(this.user).subscribe({
+      next: (updatedUser: UserDTO) => {
+          console.log('Utente aggiornato:', updatedUser);
+          // Altre azioni se necessario
+      }
+    });
+  }
+
+
   formatDates() {
     if (this.user.birthDate) {
       this.formattedBirthDate = this.datePipe.transform(this.user.birthDate, 'dd/MM/yyyy') || '';
@@ -76,4 +98,6 @@ export class UserDetailComponent implements OnInit {
       console.error('Elemento con ID "scheda" non trovato'); // Gestisci il caso in cui l'elemento non è stato trovato
     }
   }
+
+  
 }

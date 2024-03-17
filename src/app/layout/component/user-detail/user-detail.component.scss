@@ -9,15 +9,46 @@
 
 .create-pdf{
   height: 20mm;
-  width: 210mm;
+  width: 100mm;
   margin-bottom: 10mm;
   font-size: 15px;
   background-color: #434764;
   color: white;
+  margin-right: 10mm;
 }
+
 .create-pdf:hover{
   background-color: #3835DE;
 }
+
+.disable{
+  height: 20mm;
+  width: 100mm;
+  margin-bottom: 10mm;
+  font-size: 15px;
+  background-color: #b35959;
+  color: white;
+}
+
+.disable:hover{
+  background-color: red;
+}
+
+
+.enable{
+  height: 20mm;
+  width: 100mm;
+  margin-bottom: 10mm;
+  font-size: 15px;
+  background-color: #65b359;
+  color: white;
+}
+
+.enable:hover{
+  background-color: rgb(17, 255, 0);
+}
+
+
 .scheda{
   width: 210mm;
   height: 297mm;

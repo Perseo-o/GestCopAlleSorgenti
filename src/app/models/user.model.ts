@@ -14,6 +14,7 @@ export interface UserDTO {
     dateIngStrut:string;
     legalSituation:string;
     idVestanet:string;
+    active:Boolean;
     lawyers:LowyerDTO[];
     externalStructures: ExternalStructureDTO[];
 }

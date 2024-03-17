@@ -1,7 +1,13 @@
 <div class="body">
-
-    <button mat-flat-button class="create-pdf" (click)="convert()"><b>Esporta in pdf</b></button> 
-
+    <div style="display: flex;">
+        <button mat-flat-button class="create-pdf" (click)="convert()"><b>Esporta in pdf</b></button> 
+        <div *ngIf="user.active">
+            <button mat-flat-button class="disable" (click)="disable()"><b>Disabilita user</b></button> 
+        </div>
+        <div *ngIf="!user.active">
+            <button mat-flat-button class="enable" (click)="enable()"><b>Riattiva user</b></button> 
+        </div>
+    </div>
     <div class="scheda" id="scheda">
         <div class="title"><b>ALLE SORGENTI - PROGETTO A</b></div>
         <div class="sub-title"><b>SCHEDA OSPITE</b></div>
