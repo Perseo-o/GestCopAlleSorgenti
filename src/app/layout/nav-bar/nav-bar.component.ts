@@ -64,7 +64,7 @@ export class NavBarComponent implements  OnInit {
     switch(choice){
       case '0':
         this.searchRequest.option=Option.NAME;
-        this.searchRequest.active=false;
+        this.searchRequest.active=true;
       break;
       case '1':
         this.searchRequest.option=Option.ID;

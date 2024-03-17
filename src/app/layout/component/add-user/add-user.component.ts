@@ -38,7 +38,8 @@ export class AddUserComponent implements OnInit {
       dateIngStrut: [''],
       residencia: [''],
       idVestanet: [''],
-      legalSituation: [''] 
+      legalSituation: [''],
+      active: true
     });
   }
 

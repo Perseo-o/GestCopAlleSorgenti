@@ -6,7 +6,7 @@ import { Option, SearchRequest } from '../models/requestBody/searchRequest.model
   providedIn: 'root'
 })
 export class SearchService {
-  private searchValueSubject = new BehaviorSubject<SearchRequest>({ name: '', id: 0, option: Option.NAME, active: false });
+  private searchValueSubject = new BehaviorSubject<SearchRequest>({ name: '', id: 0, option: Option.NAME, active: true });
   searchValue$ = this.searchValueSubject.asObservable();
 
   constructor() {}
