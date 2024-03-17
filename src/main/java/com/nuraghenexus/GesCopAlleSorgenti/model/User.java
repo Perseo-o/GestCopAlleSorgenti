@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @AllArgsConstructor
@@ -24,13 +24,13 @@ public class User{
     private String surname;
     private String nationState;
     private String nationality;
-    private LocalDateTime birthDate;
+    private LocalDate birthDate;
     private String codFiscal;
-    private LocalDateTime dateIngIta;
-    private LocalDateTime dateIngStrut;
+    private LocalDate dateIngIta;
+    private LocalDate dateIngStrut;
     private String legalSituation;
     private String idVestanet;
-
+    private Boolean active;
     @ManyToMany
     private List<ExternalStructure> externalStructureList;
 

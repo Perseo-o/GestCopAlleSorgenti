@@ -30,6 +30,7 @@ public class UserConverter extends AbstractConverter<User, UserDTO> {
                     userDTO.getDateIngStrut(),
                     userDTO.getLegalSituation(),
                     userDTO.getIdVestanet(),
+                    userDTO.getActive(),
                     externalStructureConverter.toEntityList(userDTO.getExternalStructureDTOList()),
                     lawyerConverter.toEntityList(userDTO.getLawyerDTOList()));
         }
@@ -53,6 +54,7 @@ public class UserConverter extends AbstractConverter<User, UserDTO> {
                     user.getDateIngStrut(),
                     user.getLegalSituation(),
                     user.getIdVestanet(),
+                    user.getActive(),
                     externalStructureConverter.toDTOList(user.getExternalStructureList()),
                     lawyerConverter.toDTOList(user.getLawyerList()));
         }

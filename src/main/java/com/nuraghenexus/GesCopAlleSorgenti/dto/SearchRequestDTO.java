@@ -14,4 +14,5 @@ public class SearchRequestDTO {
     private String name;
     private Long id;
     private OptionSearch option;
+    private Boolean active;
 }
