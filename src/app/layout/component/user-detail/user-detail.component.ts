@@ -17,6 +17,7 @@ export class UserDetailComponent implements OnInit {
 
   user!: UserDTO;
 
+
   formattedBirthDate: string = "";
   formattedDateIngIta: string = "";
   formattedDateIngStrut: string = "";
@@ -41,30 +42,36 @@ export class UserDetailComponent implements OnInit {
       next: (res: UserDTO) => {
           this.user = res;
           this.formatDates();
+          console.log(res);
       }
     });
   }
 
   
   disable() {
-    this.user.active = false;
-    this.userService.update(this.user).subscribe({
-      next: (updatedUser: UserDTO) => {
-          console.log('Utente aggiornato:', updatedUser);
-          // Altre azioni se necessario
-      }
-    });
+    if (this.user) {
+      this.user.active = false;
+      this.userService.update(this.user).subscribe({
+        next: (updatedUser: UserDTO) => {
+            console.log('Utente aggiornato:', updatedUser);
+            // Altre azioni se necessario
+        }
+      });
+    }
   }
-
+  
   enable() {
-    this.user.active = true;
-    this.userService.update(this.user).subscribe({
-      next: (updatedUser: UserDTO) => {
-          console.log('Utente aggiornato:', updatedUser);
-          // Altre azioni se necessario
-      }
-    });
+    if (this.user) {
+      this.user.active = true;
+      this.userService.update(this.user).subscribe({
+        next: (updatedUser: UserDTO) => {
+            console.log('Utente aggiornato:', updatedUser);
+            // Altre azioni se necessario
+        }
+      });
+    }
   }
+  
 
 
   formatDates() {

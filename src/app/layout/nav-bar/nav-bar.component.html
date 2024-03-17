@@ -19,17 +19,24 @@
 
         <div class="center">
             <input 
-            matInput
-            type="text"
-            formControlName="searchValue"
-            class="search-bar-input"
-            placeholder="Cerca qui i prodotti che ti interessano"
-            name="searchInput"
+                matInput
+                type="text"
+                [(ngModel)]="searchValue"
+                (ngModelChange)="updateSearchValue($event)"
+                class="search-bar-input"
+                placeholder="Cerca qui i prodotti che ti interessano"
+                name="searchInput"
             />
             
             <div class="search-btn">
                 <div class="filter">
-                    <mat-icon>tune</mat-icon>
+                    <p
+                    class="filter-btn"
+                    matTooltip="Filtra"
+                    [matMenuTriggerFor]="menu"
+                    >
+                        <mat-icon>tune</mat-icon>
+                    </p>
                 </div>
 
                 <div class="search">
@@ -41,10 +48,19 @@
         <div class="corner-right">
             
             <button mat-flat-button class="add" (click)="goToAdd()">Aggiungi</button>
-            </div>
+        </div>
   
     </header>
   
   
   </div>
   <router-outlet></router-outlet>
+
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="selectChoice('0')"></button>
+    <button mat-menu-item (click)="selectChoice('1')">Tutti per id</button>
+    <button mat-menu-item (click)="selectChoice('2')">Tutti per nome</button>
+    <button mat-menu-item (click)="selectChoice('3')">Attivi per id</button>
+    <button mat-menu-item (click)="selectChoice('4')">Attivi per nome</button>
+  </mat-menu>

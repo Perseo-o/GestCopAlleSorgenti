@@ -7,7 +7,7 @@
         <div class="sub-title"><b>SCHEDA NUOVO OSPITE</b></div>
 
         <div class="contenuto">
-            <form>
+            <form  [formGroup]="scheda">
                 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>NOME</mat-label>
@@ -41,19 +41,19 @@
                 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>DATA DI INGRESSO IN ITALIA</mat-label>
-                    <input matInput type="date" name="ingIta" formControlName="ingIta">
+                    <input matInput type="date" name="dateIngIta" formControlName="dateIngIta">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>DATA DI INGRESSO IN STRUTTURA</mat-label>
-                    <input matInput type="date" name="ingStrut" formControlName="ingStrut">
+                    <input matInput type="date" name="dateIngStrut" formControlName="dateIngStrut">
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>RESIDENZA</mat-label>
-                    <mat-select>
-                        <mat-option value="Site.COP_SORG_IGL">VIA IGLESIAS</mat-option>
-                        <mat-option value="Site.COP_SORG_MONT">VIA DEL MONTE</mat-option>
+                    <mat-select formControlName="site">
+                        <mat-option value="COP_SORG_IGL">VIA IGLESIAS</mat-option>
+                        <mat-option value="COP_SORG_MONT">VIA DEL MONTE</mat-option>
                     </mat-select>
                 </mat-form-field>
                 
@@ -81,11 +81,6 @@
                     </mat-select>
                 </mat-form-field>
                 
-<!--mdc-text-field--outlined   
-
-
-
-                <p>NUMERO RIFERIMENTO:        <input  type="text">       </p>-->
             </form>
         </div>
         

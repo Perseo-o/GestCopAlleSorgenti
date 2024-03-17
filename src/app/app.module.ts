@@ -14,7 +14,8 @@ import { AddUserComponent } from './layout/component/add-user/add-user.component
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -34,6 +35,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatFormFieldModule, 
     MatInputModule, 
     BrowserAnimationsModule, 
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideClientHydration(),

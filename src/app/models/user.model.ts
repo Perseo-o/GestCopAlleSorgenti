@@ -5,16 +5,16 @@ export interface UserDTO {
     id: number;
     site: Site;
     name: string;
-    surname:string;
-    nationState:string;
-    nationality:string;
-    birthDate:string;
-    codFiscal:string;
-    dateIngIta:string;
-    dateIngStrut:string;
-    legalSituation:string;
-    idVestanet:string;
-    active:Boolean;
+    surname: string;
+    nationState: string;
+    nationality: string;
+    birthDate: Date; 
+    codFiscal: string;
+    dateIngIta: Date; 
+    dateIngStrut: Date; 
+    legalSituation: string;
+    idVestanet: string;
+    active: boolean;
     lawyers:LowyerDTO[];
     externalStructures: ExternalStructureDTO[];
 }

@@ -1,4 +1,4 @@
-<div class="body">
+<div class="body" *ngIf="user">
     <div style="display: flex;">
         <button mat-flat-button class="create-pdf" (click)="convert()"><b>Esporta in pdf</b></button> 
         <div *ngIf="user.active">
@@ -36,20 +36,24 @@
 
             <p>ID VESTANET: <b>{{user.idVestanet}}</b></p>
 
-            <p *ngIf="user.legalSituation">SITUAZIONE GIURIDICA: {{user.legalSituation}}</p>
+            <p>SITUAZIONE GIURIDICA: {{ user.legalSituation }}</p>
 
             <div *ngIf="user.lawyers && user.lawyers.length > 0">
                 <div class="message">Avvocati:</div>
                 <ng-container *ngFor="let lawyer of user.lawyers">
-                    <p>AVVOCATO: <b>{{lawyer.name}}</b></p>
-                    <p><b>{{lawyer.contDetails}}</b></p>
+                    <p>AVVOCATO: <b>{{ lawyer.name }}</b></p>
+                    <p><b>{{ lawyer.contDetails }}</b></p>
                 </ng-container>
             </div>
-
-            <div class="message" *ngIf="user.externalStructures && user.externalStructures.length > 0">Strutture precedenti:</div>
+        
+            <div class="message" *ngIf="user.externalStructures && user.externalStructures.length > 0">
+                Strutture precedenti:
+            </div>
             <ng-container *ngFor="let structure of user.externalStructures">
-                <p *ngIf="user.externalStructures">NUMERO RIFERIMENTO: <b>{{structure.refNumber}}</b></p>
+                <p>NUMERO RIFERIMENTO: <b>{{ structure.refNumber }}</b></p>
+                <p>RESIDENZA: <b>{{ structure.residence }}</b></p>
             </ng-container>
+            
             
         </div>
         
