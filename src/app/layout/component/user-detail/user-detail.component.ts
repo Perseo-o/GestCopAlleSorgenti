@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'; // Importa OnInit
 import { UserService } from '../../../services/user.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserDTO } from '../../../models/user.model';
 import { DatePipe } from '@angular/common';
 // @ts-ignore
@@ -24,6 +24,7 @@ export class UserDetailComponent implements OnInit {
 
 
   constructor(
+    protected router: Router,
     private route: ActivatedRoute,
     private userService: UserService,
     private datePipe: DatePipe
@@ -106,5 +107,9 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
+
+  userUpdate(){
+    this.router.navigate(['GestCopAlleSorgenti/update-user', this.user.id]);
+  }
   
 }

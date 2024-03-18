@@ -1,8 +1,8 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ExternalStructureService } from '../../../services/external-structure.service';
-import { ExternalStructureDTO } from '../../../models/externalStructure.model';
+import { ExternalStructureService } from '../../../../services/external-structure.service';
+import { ExternalStructureDTO } from '../../../../models/externalStructure.model';
 
 @Component({
   selector: 'app-add-external-structure',

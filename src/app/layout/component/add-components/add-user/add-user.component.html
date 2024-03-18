@@ -70,15 +70,15 @@
 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>AVVOCATO</mat-label>
-                    <mat-select formControlName="lawyer">
-                        <mat-option value="lawyer"></mat-option>
+                    <mat-select formControlName="lawyers">
+                        <mat-option *ngFor="let lawyer of lawyers" [value]="lawyer">{{ lawyer.name }}</mat-option>
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>STRUTTURE PRECEDENTI</mat-label>
-                    <mat-select>
-                        <mat-option value="Site.COP_SORG_IGL">TODOO</mat-option>
+                    <mat-select formControlName="externalStructures">
+                        <mat-option *ngFor="let extStructure of extStructures" [value]="extStructure">{{ extStructure.refNumber }}</mat-option>
                     </mat-select>
                 </mat-form-field>
                 

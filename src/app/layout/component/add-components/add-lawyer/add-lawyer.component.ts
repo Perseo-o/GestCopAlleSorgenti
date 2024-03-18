@@ -2,8 +2,8 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { LawyerDTO } from '../../../models/lawyer.model';
-import { LawyerService } from '../../../services/lawyer.service';
+import { LawyerDTO } from '../../../../models/lawyer.model';
+import { LawyerService } from '../../../../services/lawyer.service';
 
 @Component({
   selector: 'app-add-lawyer',

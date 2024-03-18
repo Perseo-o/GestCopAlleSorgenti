@@ -1,5 +1,5 @@
 <div class="body" *ngIf="user">
-    <div style="display: flex;">
+    <div class="button">
         <button mat-flat-button class="create-pdf" (click)="convert()"><b>Esporta in pdf</b></button> 
         <div *ngIf="user.active">
             <button mat-flat-button class="disable" (click)="disable()"><b>Disabilita user</b></button> 
@@ -7,6 +7,8 @@
         <div *ngIf="!user.active">
             <button mat-flat-button class="enable" (click)="enable()"><b>Riattiva user</b></button> 
         </div>
+        
+        <button mat-flat-button class="update" (click)="userUpdate()"><b>Aggiorna Dati Utente</b></button>
     </div>
     <div class="scheda" id="scheda">
         <div class="title"><b>ALLE SORGENTI - PROGETTO A</b></div>

@@ -1,0 +1,49 @@
+.body{
+    display: grid;
+    background-color: #C4C3CD;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-user{
+    margin-top: 10.5mm;
+    height: 20mm;
+    width: 210mm;
+    font-size: 15px;
+    background-color: #434764;
+    color: white;
+    margin-bottom: 10mm;
+  }
+  .add-user:hover{
+    background-color: #3835DE;
+  }
+  .scheda{
+    width: 210mm;
+    height: 297mm;
+    background-color: white;
+  }
+  
+  .title{
+    margin: 10mm 47mm 20mm 47mm;
+    font-size: 30px;
+    padding-top: 20mm;
+  }
+  
+  .sub-title{
+    margin: 0 75mm 0 75mm;
+    font-size: 20px;
+  }
+  
+  .contenuto{
+    padding: 15mm 20mm 0 20mm;
+    width: 100%;
+  }
+  .message{
+    font-style: italic;
+    margin-bottom: 20px;
+  }
+  
+  .formaInput{
+    margin-right: 16mm;
+    width: 77mm;
+  }

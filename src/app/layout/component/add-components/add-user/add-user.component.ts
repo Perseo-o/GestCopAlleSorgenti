@@ -1,10 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { UserDTO } from '../../../models/user.model';
-import { UserService } from '../../../services/user.service';
-import { LawyerService } from '../../../services/lawyer.service';
-import { LawyerDTO } from '../../../models/lawyer.model';
+import { UserDTO } from '../../../../models/user.model';
+import { UserService } from '../../../../services/user.service';
+import { LawyerService } from '../../../../services/lawyer.service';
+import { LawyerDTO } from '../../../../models/lawyer.model';
+import { ExternalStructureService } from '../../../../services/external-structure.service';
+import { ExternalStructureDTO } from '../../../../models/externalStructure.model';
 
 @Component({
   selector: 'app-add-user',
@@ -14,24 +16,41 @@ import { LawyerDTO } from '../../../models/lawyer.model';
 export class AddUserComponent implements OnInit { 
   scheda!: FormGroup;
   lawyers: LawyerDTO[]=[];
+  extStructures: ExternalStructureDTO[]=[];
+
   constructor(
     private userService: UserService,
     private datePipe: DatePipe,
     private formBuilder: FormBuilder,
     private lawyerService: LawyerService,
+    private exteStructureService: ExternalStructureService
   ) {}
 
   ngOnInit(): void {
     this.initForm();
-
+    this.getAllLawyers();
+    this.getAllExtStructure();
   }
 
 
-  getAll(): void {
+  getAllLawyers(): void {
     this.lawyerService.getAll().subscribe({
       next: (res: LawyerDTO[]) => {
         if (res) {
           this.lawyers = res;
+        }
+      },
+      error: (error: any) => {
+        console.error('Error fetching lawyer:', error);
+      }
+    });
+  }
+
+  getAllExtStructure(): void {
+    this.exteStructureService.getAll().subscribe({
+      next: (res: ExternalStructureDTO[]) => {
+        if (res) {
+          this.extStructures = res;
         }
       },
       error: (error: any) => {
@@ -56,7 +75,9 @@ export class AddUserComponent implements OnInit {
       residencia: [''],
       idVestanet: [''],
       legalSituation: [''],
-      active: true
+      active: true,
+      lawyers:[''],
+      externalStructures:['']
     });
   }
 

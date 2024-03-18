@@ -7,14 +7,21 @@
     background-color: #C4C3CD;
 }
 
+.button{
+  display: flex; 
+  flex-wrap: wrap; 
+  width: 210mm;
+  margin-bottom: 5mm;
+}
+
 .create-pdf{
-  height: 20mm;
-  width: 100mm;
-  margin-bottom: 10mm;
+  height: 12mm;
+  width: 102mm;
+  margin-bottom: 4mm;
   font-size: 15px;
   background-color: #434764;
   color: white;
-  margin-right: 10mm;
+  margin-right: 5mm;
 }
 
 .create-pdf:hover{
@@ -22,9 +29,8 @@
 }
 
 .disable{
-  height: 20mm;
-  width: 100mm;
-  margin-bottom: 10mm;
+  height: 12mm;
+  width: 103mm;
   font-size: 15px;
   background-color: #b35959;
   color: white;
@@ -34,11 +40,9 @@
   background-color: red;
 }
 
-
 .enable{
-  height: 20mm;
-  width: 100mm;
-  margin-bottom: 10mm;
+  height: 12mm;
+  width: 103mm;
   font-size: 15px;
   background-color: #65b359;
   color: white;
@@ -46,6 +50,17 @@
 
 .enable:hover{
   background-color: rgb(17, 255, 0);
+}
+
+.update{
+  width: 210mm;
+  height: 12mm;
+  font-size: 15px;
+  background-color:#6d6da1;
+}
+
+.update:hover{
+  background-color: #89899c;
 }
 
 
