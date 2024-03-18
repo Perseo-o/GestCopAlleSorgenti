@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './layout/component/home/home.component';
 import { NavBarComponent } from './layout/nav-bar/nav-bar.component';
 import { UserDetailComponent } from './layout/component/user-detail/user-detail.component';
-import { AddUserComponent } from './layout/component/add-user/add-user.component';
+import { AddGeneralComponent } from './layout/component/add-general/add-general.component';
 
 const routes: Routes = [{ path: '', redirectTo: 'GestCopAlleSorgenti/home', pathMatch: 'full' },
 {
@@ -12,7 +12,7 @@ const routes: Routes = [{ path: '', redirectTo: 'GestCopAlleSorgenti/home', path
   children: [
     { path: 'home', component: HomeComponent },
     { path: 'user-detail/:n', component: UserDetailComponent },
-    { path: 'add-user', component: AddUserComponent},
+    { path: 'add-general', component: AddGeneralComponent},
   ]
 },
 ];

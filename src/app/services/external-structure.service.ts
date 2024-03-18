@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { ExternalStructureDTO } from '../models/externalStructure.model';
 
 @Injectable({ providedIn: 'root' })
-export class externalStructure extends AbstractService<ExternalStructureDTO>{
+export class ExternalStructureService extends AbstractService<ExternalStructureDTO>{
   
   constructor(http: HttpClient) {
     super(http);

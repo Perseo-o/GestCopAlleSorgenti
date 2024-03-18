@@ -1,5 +1,6 @@
 <div class="body">
 
+    
     <button mat-flat-button color="primary" class="add-user" (click)="add()"><b>Aggiungi nuovo ospite</b></button> 
 
     <div class="scheda">
@@ -26,27 +27,27 @@
                 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>NAZIONALITA'</mat-label>
-                    <input matInput type="text" name="nationality" formControlName="nationality">
+                    <input matInput type="text"  formControlName="nationality">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>DATA DI NASCITA</mat-label>
-                    <input matInput type="date" name="birthDate" formControlName="birthDate">
+                    <input matInput type="date"  formControlName="birthDate">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>CODICE FISCALE</mat-label>
-                    <input matInput type="text" name="codFiscal" formControlName="codFiscal">
+                    <input matInput type="text" formControlName="codFiscal">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>DATA DI INGRESSO IN ITALIA</mat-label>
-                    <input matInput type="date" name="dateIngIta" formControlName="dateIngIta">
+                    <input matInput type="date"  formControlName="dateIngIta">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>DATA DI INGRESSO IN STRUTTURA</mat-label>
-                    <input matInput type="date" name="dateIngStrut" formControlName="dateIngStrut">
+                    <input matInput type="date"  formControlName="dateIngStrut">
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="formaInput">
@@ -59,18 +60,18 @@
                 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>ID VESTANET</mat-label>
-                    <input matInput type="text" name="idVestanet" formControlName="idVestanet">
+                    <input matInput type="text" formControlName="idVestanet">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput" style="width: 170mm;">
                     <mat-label>SITUAZIONE GIURIDICA</mat-label>
-                    <input matInput type="text" name="legalSituation" style="background-color: white;" formControlName="legalSituation">
+                    <textarea matInput type="text" style="background-color: white;" formControlName="legalSituation"></textarea>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>AVVOCATO</mat-label>
-                    <mat-select>
-                        <mat-option value="Site.COP_SORG_IGL">TODOO</mat-option>
+                    <mat-select formControlName="lawyer">
+                        <mat-option value="lawyer"></mat-option>
                     </mat-select>
                 </mat-form-field>
 

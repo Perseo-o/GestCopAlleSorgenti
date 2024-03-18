@@ -1,5 +1,5 @@
 import { ExternalStructureDTO } from "./externalStructure.model";
-import { LowyerDTO } from "./lowyer.model";
+import { LawyerDTO } from "./lawyer.model";
 
 export interface UserDTO {
     id: number;
@@ -15,7 +15,7 @@ export interface UserDTO {
     legalSituation: string;
     idVestanet: string;
     active: boolean;
-    lawyers:LowyerDTO[];
+    lawyers:LawyerDTO[];
     externalStructures: ExternalStructureDTO[];
 }
 

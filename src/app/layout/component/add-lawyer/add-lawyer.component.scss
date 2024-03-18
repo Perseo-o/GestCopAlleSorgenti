@@ -1,9 +1,14 @@
-
+.body {
+    display: grid;
+    width: 110mm;
+    padding: 40px 0 50px 0;
+    background-color: #C4C3CD;
+}
 
 .add-user{
-  margin-top: 10.5mm;
   height: 20mm;
-  width: 210mm;
+  width: 110mm;
+  margin-bottom: 10mm;
   font-size: 15px;
   background-color: #434764;
   color: white;
@@ -12,25 +17,18 @@
   background-color: #3835DE;
 }
 .scheda{
-  width: 210mm;
-  height: 297mm;
+  width: 110mm;
+  height: 80mm;
   background-color: white;
 }
 
 .title{
-  margin: 10mm 47mm 20mm 47mm;
+  margin: 11mm 36mm 0mm  ;
   font-size: 30px;
-  padding-top: 20mm;
-}
-
-.sub-title{
-  margin: 0 75mm 0 75mm;
-  font-size: 20px;
 }
 
 .contenuto{
-  padding: 15mm 20mm 0 20mm;
-  width: 100%;
+  padding: 10mm 20mm 0 20mm;
 }
 .message{
   font-style: italic;
@@ -39,5 +37,5 @@
 
 .formaInput{
   margin-right: 16mm;
-  width: 77mm;
+  width: 70mm;
 }

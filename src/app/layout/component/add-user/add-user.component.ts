@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserDTO } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
+import { LawyerService } from '../../../services/lawyer.service';
+import { LawyerDTO } from '../../../models/lawyer.model';
 
 @Component({
   selector: 'app-add-user',
@@ -11,19 +13,34 @@ import { UserService } from '../../../services/user.service';
 })
 export class AddUserComponent implements OnInit { 
   scheda!: FormGroup;
-  formattedBirthDate: string = "";
-  formattedDateIngIta: string = "";
-  formattedDateIngStrut: string = "";
-
+  lawyers: LawyerDTO[]=[];
   constructor(
     private userService: UserService,
     private datePipe: DatePipe,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private lawyerService: LawyerService,
   ) {}
 
   ngOnInit(): void {
     this.initForm();
+
   }
+
+
+  getAll(): void {
+    this.lawyerService.getAll().subscribe({
+      next: (res: LawyerDTO[]) => {
+        if (res) {
+          this.lawyers = res;
+        }
+      },
+      error: (error: any) => {
+        console.error('Error fetching lawyer:', error);
+      }
+    });
+  }
+
+
 
   initForm(): void {
     this.scheda = this.formBuilder.group({
@@ -57,15 +74,4 @@ export class AddUserComponent implements OnInit {
     );
   }
 
-  formatDates(): void {
-    if (this.scheda.value.birthDate) {
-      this.formattedBirthDate = this.datePipe.transform(this.scheda.value.birthDate, 'dd/MM/yyyy') || '';
-    }
-    if (this.scheda.value.ingIta) {
-      this.formattedDateIngIta = this.datePipe.transform(this.scheda.value.ingIta, 'dd/MM/yyyy') || '';
-    }
-    if (this.scheda.value.ingStrut) {
-      this.formattedDateIngStrut = this.datePipe.transform(this.scheda.value.ingStrut, 'dd/MM/yyyy') || '';
-    }
-  }
 }

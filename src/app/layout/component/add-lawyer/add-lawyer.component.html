@@ -1,0 +1,25 @@
+<div class="body">
+
+    <button mat-flat-button color="primary" class="add-user" (click)="add()"><b>Aggiungi nuovo avvocato</b></button> 
+
+    <div class="scheda">
+        <div class="title"><b>AVVOCATI</b></div>
+
+        <div class="contenuto">
+            <form  [formGroup]="schedaAvv">
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>NOME</mat-label>
+                    <input matInput type="text" name="name" formControlName="name">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>INFO</mat-label>
+                    <textarea matInput type="text" name="contDetails" formControlName="contDetails"></textarea>
+                </mat-form-field>
+                
+            </form>
+        </div>
+        
+    </div>
+</div>

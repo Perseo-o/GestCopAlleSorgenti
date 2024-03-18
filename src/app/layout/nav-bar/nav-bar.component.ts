@@ -36,7 +36,7 @@ export class NavBarComponent implements  OnInit {
   }
 
   goToAdd(){
-    this.router.navigate(['GestCopAlleSorgenti/add-user']);
+    this.router.navigate(['GestCopAlleSorgenti/add-general']);
   }
 
   updateSearchValue(value: string) {
