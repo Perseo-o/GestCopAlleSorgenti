@@ -15,8 +15,8 @@ export interface UserDTO {
     legalSituation: string;
     idVestanet: string;
     active: boolean;
-    lawyers:LawyerDTO[];
-    externalStructures: ExternalStructureDTO[];
+    lawyerDTOList:LawyerDTO[];
+    externalStructureDTOList: ExternalStructureDTO[];
 }
 
 export enum Site {

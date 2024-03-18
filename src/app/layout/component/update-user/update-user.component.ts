@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, AbstractControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserDTO } from '../../../models/user.model';
@@ -53,25 +53,12 @@ export class UpdateUserComponent implements OnInit {
         this.user = res;
         this.formatDates();
         if (this.user) {
-          this.scheda.patchValue({
-            name: this.user.name,
-            surname: this.user.surname,
-            nationState: this.user.nationState,
-            nationality: this.user.nationality,
-            birthDate: this.user.birthDate,
-            codFiscal: this.user.codFiscal,
-            dateIngIta: this.user.dateIngIta,
-            dateIngStrut: this.user.dateIngStrut,
-            site: this.user.site,
-            idVestanet: this.user.idVestanet,
-            legalSituation: this.user.legalSituation,
-            lawyers: this.user.lawyers,
-            externalStructures: this.user.externalStructures
-          });
+          this.scheda.patchValue(this.user);
         }
       }
     });
   }
+  
 
   getAllLawyers(): void {
     this.lawyerService.getAll().subscribe({
@@ -97,7 +84,6 @@ export class UpdateUserComponent implements OnInit {
 
   initForm(): void {
     this.scheda = this.formBuilder.group({
-      id: this.userId,
       site: [''],
       name: [''],
       surname: [''],
@@ -111,9 +97,43 @@ export class UpdateUserComponent implements OnInit {
       idVestanet: [''],
       legalSituation: [''],
       active: true,
-      lawyers: [''],
-      externalStructures: ['']
+      lawyerDTOList: this.formBuilder.array([]),
+      externalStructureDTOList: this.formBuilder.array([])
     });
+  }
+
+  isFormArray(control: AbstractControl | null): control is FormArray {
+    return control instanceof FormArray;
+  }
+
+  addLawyer() {
+     const lawyerControl = this.formBuilder.control('');
+     const lawyersArray = this.scheda.get('lawyerDTOList') as FormArray;
+    if (lawyersArray) {
+      lawyersArray.push(lawyerControl);
+    }
+  }
+
+  addExternalStructure() {
+    const externalStructureControl = this.formBuilder.control('');
+    const externalStructuresArray = this.scheda.get('externalStructureDTOList') as FormArray;
+    if (externalStructuresArray) {
+      externalStructuresArray.push(externalStructureControl);
+    }
+  }
+
+  removeLawyer(index: number) {
+    const lawyersArray = this.scheda.get('lawyerDTOList') as FormArray;
+    if (lawyersArray) {
+      lawyersArray.removeAt(index);
+    }
+  }
+
+  removeExternalStructure(index: number) {
+    const externalStructuresArray = this.scheda.get('externalStructureDTOList') as FormArray;
+    if (externalStructuresArray) {
+      externalStructuresArray.removeAt(index);
+    }
   }
 
   update(): void {
@@ -132,14 +152,10 @@ export class UpdateUserComponent implements OnInit {
   }
 
   formatDates() {
-    if (this.user.birthDate) {
-      this.formattedBirthDate = this.datePipe.transform(this.user.birthDate, 'dd/MM/yyyy') || '';
-    }
-    if (this.user.dateIngIta) {
-      this.formattedDateIngIta = this.datePipe.transform(this.user.dateIngIta, 'dd/MM/yyyy') || '';
-    }
-    if (this.user.dateIngStrut) {
-      this.formattedDateIngStrut = this.datePipe.transform(this.user.dateIngStrut, 'dd/MM/yyyy') || '';
+    if (this.user) {
+      this.formattedBirthDate = this.datePipe.transform(this.user.birthDate, 'yyyy-MM-dd') || '';
+      this.formattedDateIngIta = this.datePipe.transform(this.user.dateIngIta, 'yyyy-MM-dd') || '';
+      this.formattedDateIngStrut = this.datePipe.transform(this.user.dateIngStrut, 'yyyy-MM-dd') || '';
     }
   }
 }

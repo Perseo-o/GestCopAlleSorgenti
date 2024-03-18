@@ -1,54 +1,51 @@
 <div class="body">
-
-
-    
-    <button mat-flat-button color="primary" class="add-user" (click)="update()"><b>Aggiorna ospite</b></button> 
+    <button mat-flat-button color="primary" class="add-user" (click)="update()"><b>Aggiorna ospite</b></button>
 
     <div class="scheda">
         <div class="title"><b>ALLE SORGENTI - PROGETTO A</b></div>
         <div class="sub-title"><b>SCHEDA NUOVO OSPITE</b></div>
 
         <div class="contenuto">
-            <form  [formGroup]="scheda">
-                
+            <form [formGroup]="scheda">
+
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>NOME</mat-label>
-                    <input matInput type="text"  formControlName="name">
+                    <input matInput type="text" formControlName="name">
                 </mat-form-field>
-                
+
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>COGNOME</mat-label>
-                    <input matInput type="text"  formControlName="surname">
+                    <input matInput type="text" formControlName="surname">
                 </mat-form-field>
-                
+
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>STATO DI NASCITA</mat-label>
-                    <input matInput type="text"  formControlName="nationState">
+                    <input matInput type="text" formControlName="nationState">
                 </mat-form-field>
-                
+
                 <mat-form-field appearance="outline" class="formaInput">
-                    <mat-label>NAZIONALITA'</mat-label>
-                    <input matInput type="text"  formControlName="nationality">
+                    <mat-label>NAZIONALITÀ</mat-label>
+                    <input matInput type="text" formControlName="nationality">
                 </mat-form-field>
-                
+
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>DATA DI NASCITA</mat-label>
-                    <input matInput type="date"  formControlName="birthDate">
+                    <input matInput type="date" formControlName="birthDate">
                 </mat-form-field>
-                
+
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>CODICE FISCALE</mat-label>
                     <input matInput type="text" formControlName="codFiscal">
                 </mat-form-field>
-                
+
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>DATA DI INGRESSO IN ITALIA</mat-label>
-                    <input matInput type="date"  formControlName="dateIngIta">
+                    <input matInput type="date" formControlName="dateIngIta">
                 </mat-form-field>
-                
+
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>DATA DI INGRESSO IN STRUTTURA</mat-label>
-                    <input matInput type="date"  formControlName="dateIngStrut">
+                    <input matInput type="date" formControlName="dateIngStrut">
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="formaInput">
@@ -58,33 +55,52 @@
                         <mat-option value="COP_SORG_MONT">VIA DEL MONTE</mat-option>
                     </mat-select>
                 </mat-form-field>
-                
+
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>ID VESTANET</mat-label>
                     <input matInput type="text" formControlName="idVestanet">
                 </mat-form-field>
-                
+
                 <mat-form-field appearance="outline" class="formaInput" style="width: 170mm;">
                     <mat-label>SITUAZIONE GIURIDICA</mat-label>
-                    <textarea matInput type="text" style="background-color: white;" formControlName="legalSituation"></textarea>
+                    <textarea matInput style="background-color: white;" formControlName="legalSituation"></textarea>
                 </mat-form-field>
 
-                <mat-form-field appearance="outline" class="formaInput">
-                    <mat-label>AVVOCATO</mat-label>
-                    <mat-select formControlName="lawyers">
-                        <mat-option *ngFor="let lawyer of lawyers" [value]="lawyer">{{ lawyer.name }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
+                <div style="display: flex; justify-content: space-between; width: 170mm;" *ngIf="user">
 
-                <mat-form-field appearance="outline" class="formaInput">
-                    <mat-label>STRUTTURE PRECEDENTI</mat-label>
-                    <mat-select formControlName="externalStructures">
-                        <mat-option *ngFor="let extStructure of extStructures" [value]="extStructure">{{ extStructure.refNumber }}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-                
+                    <div >
+                        <button mat-flat-button color="primary" (click)="addLawyer()" style="width: 80mm; margin-bottom: 20px;">Aggiungi Lawyer</button>
+
+                        <div *ngIf="user.lawyerDTOList">
+                            <div formArrayName="lawyerDTOList">
+                                <div *ngFor="let lawyerControl of user.lawyerDTOList; let i = index" [formGroupName]="i">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Nome Avvocato</mat-label>
+                                        <input matInput formControlName="lawyerDTOList" [value]="lawyerControl.name">
+                                    </mat-form-field>
+                                    <button mat-button color="warn" (click)="removeLawyer(i)">Rimuovi</button>
+                                </div>
+                            </div> 
+                        </div> 
+                    </div>
+
+                    <div>
+                        <button mat-flat-button color="primary" (click)="addExternalStructure()" style="width: 80mm; margin-bottom: 20px;">Aggiungi External Structure</button>
+
+                        <div *ngIf="user.externalStructureDTOList">
+                            <div formArrayName="externalStructureDTOList">
+                                <div *ngFor="let externalStructureControl of user.externalStructureDTOList; let i = index" [formGroupName]="i">
+                                    <mat-form-field appearance="outline">
+                                        <mat-label>Codice Struttura</mat-label>
+                                        <input matInput formControlName="externalStructureDTOList" [value]="externalStructureControl.refNumber">
+                                    </mat-form-field>
+                                    <button mat-button color="warn" (click)="removeExternalStructure(i)">Rimuovi</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </form>
         </div>
-        
     </div>
 </div>

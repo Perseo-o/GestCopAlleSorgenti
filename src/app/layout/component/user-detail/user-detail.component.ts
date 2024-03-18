@@ -41,9 +41,9 @@ export class UserDetailComponent implements OnInit {
   read(userId: number): void {
     this.userService.read(userId).subscribe({
       next: (res: UserDTO) => {
+        console.log(res);
           this.user = res;
           this.formatDates();
-          console.log(res);
       }
     });
   }

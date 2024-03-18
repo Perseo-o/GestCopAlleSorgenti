@@ -40,21 +40,27 @@
 
             <p>SITUAZIONE GIURIDICA: {{ user.legalSituation }}</p>
 
-            <div *ngIf="user.lawyers && user.lawyers.length > 0">
+            
+            <div *ngIf="true">
                 <div class="message">Avvocati:</div>
-                <ng-container *ngFor="let lawyer of user.lawyers">
-                    <p>AVVOCATO: <b>{{ lawyer.name }}</b></p>
-                    <p><b>{{ lawyer.contDetails }}</b></p>
+                <ng-container *ngFor="let lawyer of user.lawyerDTOList">
+                <!-- Assicurati che i dati degli avvocati siano strutturati correttamente -->
+                <p>AVVOCATO: <b>{{ lawyer.name }}</b></p>
+                <p><b>{{ lawyer.contDetails }}</b></p>
                 </ng-container>
             </div>
-        
-            <div class="message" *ngIf="user.externalStructures && user.externalStructures.length > 0">
+            
+            <div class="message" *ngIf="user && user.externalStructureDTOList">
                 Strutture precedenti:
             </div>
-            <ng-container *ngFor="let structure of user.externalStructures">
+            <ng-container *ngIf="user.externalStructureDTOList">
+                <div *ngFor="let structure of user.externalStructureDTOList">
+                <!-- Assicurati che i dati delle strutture esterne siano strutturati correttamente -->
                 <p>NUMERO RIFERIMENTO: <b>{{ structure.refNumber }}</b></p>
                 <p>RESIDENZA: <b>{{ structure.residence }}</b></p>
+                </div>
             </ng-container>
+              
             
             
         </div>
