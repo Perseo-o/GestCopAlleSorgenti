@@ -23,26 +23,29 @@ public class UserService extends AbstractService<User, UserDTO> {
         if (!searchRequest.getActive()) {
             if (searchRequest.getOption() != OptionSearch.NAME) {
                 return repository.findAll().stream().map(converter::toDTO)
-                        .filter(User -> searchRequest.getId().equals(User.getId()))
+                        .filter(user -> searchRequest.getId().equals(user.getId()))
                         .sorted(Comparator.comparing(UserDTO::getId))
                         .collect(Collectors.toList());
             } else {
-                return repository.findAll().stream().map(converter::toDTO)
-                        .filter(User -> (User.getName() + ' ' + User.getSurname()).contains(searchRequest.getName()))
+                return repository.findAll().stream()
+                        .map(converter::toDTO)
+                        .filter(user -> (user.getName() + ' ' + user.getSurname()).toLowerCase()
+                                .contains(searchRequest.getName().toLowerCase()))
                         .sorted(Comparator.comparing(UserDTO::getId))
                         .collect(Collectors.toList());
             }
         }else{
             if (searchRequest.getOption() != OptionSearch.NAME) {
                 return repository.findAll().stream().map(converter::toDTO)
-                        .filter(User -> searchRequest.getId().equals(User.getId())&&
-                                        searchRequest.getActive().equals(User.getActive()))
+                        .filter(user -> searchRequest.getId().equals(user.getId())&&
+                                        searchRequest.getActive().equals(user.getActive()))
                         .sorted(Comparator.comparing(UserDTO::getId))
                         .collect(Collectors.toList());
             } else {
                 return repository.findAll().stream().map(converter::toDTO)
-                        .filter(User -> (User.getName() + ' ' + User.getSurname()).contains(searchRequest.getName())&&
-                                        searchRequest.getActive().equals(User.getActive()))
+                        .filter(user -> (user.getName() + ' ' + user.getSurname()).toLowerCase()
+                                .contains(searchRequest.getName().toLowerCase())&&
+                                        searchRequest.getActive().equals(user.getActive()))
                         .sorted(Comparator.comparing(UserDTO::getId))
                         .collect(Collectors.toList());
             }

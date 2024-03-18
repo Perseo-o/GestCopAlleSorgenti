@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/v1/externalstructure")
+@RequestMapping("/api/v1/externalStructure")
 @CrossOrigin(origins = "${allowed.origin}")
 public class ExternalStructureController extends AbstractController<ExternalStructureDTO> {
 }
