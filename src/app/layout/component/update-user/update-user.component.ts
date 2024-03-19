@@ -127,7 +127,6 @@ export class UpdateUserComponent implements OnInit {
     userData.id = this.userId;
     userData.externalStructureDTOList = this.extStructuresToAdd;
     userData.lawyerDTOList = this.lawyersToAdd;
-    console.log(userData)
     this.userService.update(userData).subscribe(
       (response) => {
         console.log("User updated successfully:", response);
@@ -138,5 +137,7 @@ export class UpdateUserComponent implements OnInit {
         // Handle errors here
       }
     );
+    
+    this.router.navigate(['GestCopAlleSorgenti/user-detail', this.user.id]);
   }
 }

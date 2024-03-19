@@ -66,12 +66,12 @@
 
 .scheda{
   width: 210mm;
-  height: 297mm;
-  background-color: white;
+  height: 296.8mm;
+  background-color: rgb(255, 255, 255);
 }
 
 .title{
-  margin: 20mm 47mm 20mm 47mm;
+  padding: 20mm 47mm 20mm 47mm;
   font-size: 30px;
 }
 
@@ -82,7 +82,7 @@
 
 .contenuto{
 
-  margin: 15mm 20mm 0 20mm;
+  margin: 14mm 20mm 0 20mm;
 }
 p{
   font-size: 17px;

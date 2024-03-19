@@ -50,18 +50,18 @@
                 </ng-container>
             </div>
             
-            <div class="message" *ngIf="user && user.externalStructureDTOList">
-                Strutture precedenti:
-            </div>
-            <ng-container *ngIf="user.externalStructureDTOList">
-                <div *ngFor="let structure of user.externalStructureDTOList">
-                <!-- Assicurati che i dati delle strutture esterne siano strutturati correttamente -->
-                <p>NUMERO RIFERIMENTO: <b>{{ structure.refNumber }}</b></p>
-                <p>RESIDENZA: <b>{{ structure.residence }}</b></p>
+                <div class="message" *ngIf="user && user.externalStructureDTOList">
+                    Strutture precedenti:
                 </div>
-            </ng-container>
-              
-            
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
+                <ng-container *ngIf="user.externalStructureDTOList">
+                    <div *ngFor="let structure of user.externalStructureDTOList" style="width: 70mm">
+                    <!-- Assicurati che i dati delle strutture esterne siano strutturati correttamente -->
+                    <p>NR. RIF. : <b>{{ structure.refNumber}}</b></p>
+                    <p>Residenza: <b>{{ structure.residence}}</b></p>
+                    </div>
+                </ng-container>
+            </div>  
             
         </div>
         
