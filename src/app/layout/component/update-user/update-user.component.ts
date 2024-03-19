@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormArray, AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup} from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UserDTO } from '../../../models/user.model';
@@ -20,13 +20,12 @@ export class UpdateUserComponent implements OnInit {
 
   scheda!: FormGroup;
   lawyers: LawyerDTO[] = [];
+  lawyersToAdd: LawyerDTO[] = [];
   extStructures: ExternalStructureDTO[] = [];
-
+  extStructuresToAdd: ExternalStructureDTO[] = [];
+  selectedLawyer!: LawyerDTO;
+  selectedExternalStructure!: ExternalStructureDTO;
   user!: UserDTO;
-
-  formattedBirthDate: string = "";
-  formattedDateIngIta: string = "";
-  formattedDateIngStrut: string = "";
 
   constructor(
     protected router: Router,
@@ -51,9 +50,10 @@ export class UpdateUserComponent implements OnInit {
     this.userService.read(userId).subscribe({
       next: (res: UserDTO) => {
         this.user = res;
-        this.formatDates();
-        if (this.user) {
-          this.scheda.patchValue(this.user);
+        if (res) {
+          this.scheda.patchValue(res);
+          this.lawyersToAdd=res.lawyerDTOList;
+          this.extStructuresToAdd=res.externalStructureDTOList;
         }
       }
     });
@@ -93,52 +93,41 @@ export class UpdateUserComponent implements OnInit {
       codFiscal: [''],
       dateIngIta: [''],
       dateIngStrut: [''],
-      residencia: [''],
       idVestanet: [''],
       legalSituation: [''],
       active: true,
-      lawyerDTOList: this.formBuilder.array([]),
-      externalStructureDTOList: this.formBuilder.array([])
+      lawyerDTOList: this.lawyersToAdd,
+      externalStructureDTOList: this.extStructuresToAdd
     });
   }
 
-  isFormArray(control: AbstractControl | null): control is FormArray {
-    return control instanceof FormArray;
-  }
 
-  addLawyer() {
-     const lawyerControl = this.formBuilder.control('');
-     const lawyersArray = this.scheda.get('lawyerDTOList') as FormArray;
-    if (lawyersArray) {
-      lawyersArray.push(lawyerControl);
+  addLawyer(lawyerDTO: LawyerDTO) {
+    if(lawyerDTO){
+      this.lawyersToAdd.push(lawyerDTO);
     }
   }
 
-  addExternalStructure() {
-    const externalStructureControl = this.formBuilder.control('');
-    const externalStructuresArray = this.scheda.get('externalStructureDTOList') as FormArray;
-    if (externalStructuresArray) {
-      externalStructuresArray.push(externalStructureControl);
+  removeLawyer(lawyerDTO: LawyerDTO) {
+    this.lawyersToAdd = this.lawyersToAdd.filter((x)=> x.id!=lawyerDTO.id);
+  }
+
+  addExternalStructure(exStru: ExternalStructureDTO) {
+    if(exStru){
+      this.extStructuresToAdd.push(exStru);
     }
   }
 
-  removeLawyer(index: number) {
-    const lawyersArray = this.scheda.get('lawyerDTOList') as FormArray;
-    if (lawyersArray) {
-      lawyersArray.removeAt(index);
-    }
-  }
-
-  removeExternalStructure(index: number) {
-    const externalStructuresArray = this.scheda.get('externalStructureDTOList') as FormArray;
-    if (externalStructuresArray) {
-      externalStructuresArray.removeAt(index);
-    }
+  removeExternalStructure(exStr: ExternalStructureDTO) {
+    this.extStructuresToAdd = this.extStructuresToAdd.filter((x)=> x.id!=exStr.id);
   }
 
   update(): void {
     const userData: UserDTO = this.scheda.value;
     userData.id = this.userId;
+    userData.externalStructureDTOList = this.extStructuresToAdd;
+    userData.lawyerDTOList = this.lawyersToAdd;
+    console.log(userData)
     this.userService.update(userData).subscribe(
       (response) => {
         console.log("User updated successfully:", response);
@@ -149,13 +138,5 @@ export class UpdateUserComponent implements OnInit {
         // Handle errors here
       }
     );
-  }
-
-  formatDates() {
-    if (this.user) {
-      this.formattedBirthDate = this.datePipe.transform(this.user.birthDate, 'yyyy-MM-dd') || '';
-      this.formattedDateIngIta = this.datePipe.transform(this.user.dateIngIta, 'yyyy-MM-dd') || '';
-      this.formattedDateIngStrut = this.datePipe.transform(this.user.dateIngStrut, 'yyyy-MM-dd') || '';
-    }
   }
 }

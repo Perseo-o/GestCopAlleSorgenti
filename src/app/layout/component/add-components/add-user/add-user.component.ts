@@ -15,8 +15,12 @@ import { ExternalStructureDTO } from '../../../../models/externalStructure.model
 })
 export class AddUserComponent implements OnInit { 
   scheda!: FormGroup;
-  lawyers: LawyerDTO[]=[];
-  extStructures: ExternalStructureDTO[]=[];
+  lawyers: LawyerDTO[] = [];
+  lawyersToAdd: LawyerDTO[] = [];
+  extStructures: ExternalStructureDTO[] = [];
+  extStructuresToAdd: ExternalStructureDTO[] = [];
+  selectedLawyer!: LawyerDTO;
+  selectedExternalStructure!: ExternalStructureDTO;
 
   constructor(
     private userService: UserService,
@@ -72,14 +76,36 @@ export class AddUserComponent implements OnInit {
       codFiscal: [''],
       dateIngIta: [''],
       dateIngStrut: [''],
-      residencia: [''],
       idVestanet: [''],
       legalSituation: [''],
       active: true,
-      lawyers:[''],
-      externalStructures:['']
+      lawyerDTOList: this.lawyersToAdd,
+      externalStructureDTOList: this.extStructuresToAdd
     });
   }
+
+  
+  addLawyer(lawyerDTO: LawyerDTO) {
+    if(lawyerDTO){
+      this.lawyersToAdd.push(lawyerDTO);
+    }
+  }
+
+  removeLawyer(lawyerDTO: LawyerDTO) {
+    this.lawyersToAdd = this.lawyersToAdd.filter((x)=> x.id!=lawyerDTO.id);
+  }
+
+  addExternalStructure(exStru: ExternalStructureDTO) {
+    if(exStru){
+      this.extStructuresToAdd.push(exStru);
+    }
+  }
+
+  removeExternalStructure(exStr: ExternalStructureDTO) {
+    this.extStructuresToAdd = this.extStructuresToAdd.filter((x)=> x.id!=exStr.id);
+  }
+
+
 
   add(): void {
     const userData: UserDTO = this.scheda.value;

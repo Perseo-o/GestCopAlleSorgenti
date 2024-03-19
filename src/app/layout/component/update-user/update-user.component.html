@@ -30,7 +30,9 @@
 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>DATA DI NASCITA</mat-label>
-                    <input matInput type="date" formControlName="birthDate">
+                    <input matInput formControlName="birthDate" [matDatepicker]="birthPicker">
+                    <mat-datepicker-toggle matIconSuffix [for]="birthPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #birthPicker></mat-datepicker>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="formaInput">
@@ -40,12 +42,16 @@
 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>DATA DI INGRESSO IN ITALIA</mat-label>
-                    <input matInput type="date" formControlName="dateIngIta">
+                    <input matInput formControlName="dateIngIta" [matDatepicker]="italianEntryPicker">
+                    <mat-datepicker-toggle matIconSuffix [for]="italianEntryPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #italianEntryPicker></mat-datepicker>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>DATA DI INGRESSO IN STRUTTURA</mat-label>
-                    <input matInput type="date" formControlName="dateIngStrut">
+                    <input matInput formControlName="dateIngStrut" [matDatepicker]="structureEntryPicker">
+                    <mat-datepicker-toggle matIconSuffix [for]="structureEntryPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #structureEntryPicker></mat-datepicker>
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="formaInput">
@@ -68,38 +74,56 @@
 
                 <div style="display: flex; justify-content: space-between; width: 170mm;" *ngIf="user">
 
-                    <div >
-                        <button mat-flat-button color="primary" (click)="addLawyer()" style="width: 80mm; margin-bottom: 20px;">Aggiungi Lawyer</button>
+                    <div style="width: 77mm;">
+                        <mat-form-field appearance="outline" style="width: 55mm;">
+                            <mat-label>AVVOCATO</mat-label>
+                            <mat-select formControlName="lawyerDTOList" [(ngModel)]="selectedLawyer">
+                                <mat-option *ngFor="let lawyer of lawyers" [value]="lawyer">{{ lawyer.name }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
 
-                        <div *ngIf="user.lawyerDTOList">
+                        <button mat-flat-button color="primary" (click)="addLawyer(selectedLawyer)" class="addButton">ADD</button>
+
+                        <div *ngIf="lawyersToAdd">
                             <div formArrayName="lawyerDTOList">
-                                <div *ngFor="let lawyerControl of user.lawyerDTOList; let i = index" [formGroupName]="i">
+                                <div *ngFor="let lawyerControl of lawyersToAdd">
                                     <mat-form-field appearance="outline">
                                         <mat-label>Nome Avvocato</mat-label>
-                                        <input matInput formControlName="lawyerDTOList" [value]="lawyerControl.name">
+                                        <input matInput [value]="lawyerControl.name">
                                     </mat-form-field>
-                                    <button mat-button color="warn" (click)="removeLawyer(i)">Rimuovi</button>
+                                    <button mat-button color="warn" (click)="removeLawyer(lawyerControl)" class="deleteButt">Elimina</button>
                                 </div>
                             </div> 
                         </div> 
                     </div>
 
-                    <div>
-                        <button mat-flat-button color="primary" (click)="addExternalStructure()" style="width: 80mm; margin-bottom: 20px;">Aggiungi External Structure</button>
+                    <div style="width: 77mm;">
+                        <mat-form-field appearance="outline" style="width: 55mm;">
+                            <mat-label>STRUTTURE PRECEDENTI</mat-label>
+                            <mat-select formControlName="externalStructureDTOList" [(ngModel)]="selectedExternalStructure">
+                                <mat-option *ngFor="let extStructure of extStructures" [value]="extStructure">{{ extStructure.refNumber }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
 
-                        <div *ngIf="user.externalStructureDTOList">
+                        <button mat-flat-button color="primary" (click)="addExternalStructure(selectedExternalStructure)" class="addButton">ADD</button>
+
+                        <div *ngIf="extStructuresToAdd">
                             <div formArrayName="externalStructureDTOList">
-                                <div *ngFor="let externalStructureControl of user.externalStructureDTOList; let i = index" [formGroupName]="i">
+                                <div *ngFor="let externalStructureControl of extStructuresToAdd">
                                     <mat-form-field appearance="outline">
                                         <mat-label>Codice Struttura</mat-label>
-                                        <input matInput formControlName="externalStructureDTOList" [value]="externalStructureControl.refNumber">
+                                        <input matInput [value]="externalStructureControl.refNumber">
                                     </mat-form-field>
-                                    <button mat-button color="warn" (click)="removeExternalStructure(i)">Rimuovi</button>
+                                    <button mat-button color="warn" (click)="removeExternalStructure(externalStructureControl)" class="deleteButt">Elimina</button>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+
                 </div>
+
+                
             </form>
         </div>
     </div>
