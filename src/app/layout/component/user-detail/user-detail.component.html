@@ -37,6 +37,13 @@
             <p>STATO DI NASCITA: <b>{{user.nationState}}</b></p>
 
             <p>CODICE FISCALE: <b>{{user.codFiscal}}</b></p>
+            
+            <p>RESIDENZA: <b><ng-container *ngIf="user.site=='COP_SORG_IGL'; else viaMonte">
+                VIA IGLESIAS 82 - VILLACIDRO(VS)
+              </ng-container>
+              <ng-template #viaMonte>
+                VIA DEL MONTE 36 - VILLACIDRO(VS)
+              </ng-template></b></p>
 
             <p>DATA DI INGRESSO IN ITALIA: <b>{{formattedDateIngIta}}</b></p>
 
@@ -45,13 +52,6 @@
             <!--DATA FORMALIZAZZIONE C3--><p>DATA FORMALIZAZZIONE C3: <b>{{formattedDateIngStrut}}</b></p>
 
             <!--DATA SCADENZA PERMESSO DI SOGGIORNO--><p>DATA SCADENZA PERMESSO: <b>{{formattedDateIngStrut}}</b></p>
-            
-            <p>RESIDENZA: <b><ng-container *ngIf="user.site=='COP_SORG_IGL'; else viaMonte">
-                VIA IGLESIAS 82
-              </ng-container>
-              <ng-template #viaMonte>
-                VIA DEL MONTE 36
-              </ng-template></b></p>
 
             <!--LINGUE--><p>LINGUE: <b>FRANCESE: A2; INGLESE: B1</b></p>
 
