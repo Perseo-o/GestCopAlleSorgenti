@@ -23,30 +23,30 @@ public class UserService extends AbstractService<User, UserDTO> {
         if (!searchRequest.getActive()) {
             if (searchRequest.getOption() != OptionSearch.NAME) {
                 return repository.findAll().stream().map(converter::toDTO)
-                        .filter(user -> searchRequest.getId().equals(user.getId()))
-                        .sorted(Comparator.comparing(UserDTO::getId))
+                        .filter(user -> searchRequest.getId().equals(user.getIdGhost()))
+                        .sorted(Comparator.comparing(UserDTO::getIdGhost))
                         .collect(Collectors.toList());
             } else {
                 return repository.findAll().stream()
                         .map(converter::toDTO)
                         .filter(user -> (user.getName() + ' ' + user.getSurname()).toLowerCase()
                                 .contains(searchRequest.getName().toLowerCase()))
-                        .sorted(Comparator.comparing(UserDTO::getId))
+                        .sorted(Comparator.comparing(UserDTO::getIdGhost))
                         .collect(Collectors.toList());
             }
         }else{
             if (searchRequest.getOption() != OptionSearch.NAME) {
                 return repository.findAll().stream().map(converter::toDTO)
-                        .filter(user -> searchRequest.getId().equals(user.getId())&&
+                        .filter(user -> searchRequest.getId().equals(user.getIdGhost())&&
                                         searchRequest.getActive().equals(user.getActive()))
-                        .sorted(Comparator.comparing(UserDTO::getId))
+                        .sorted(Comparator.comparing(UserDTO::getIdGhost))
                         .collect(Collectors.toList());
             } else {
                 return repository.findAll().stream().map(converter::toDTO)
                         .filter(user -> (user.getName() + ' ' + user.getSurname()).toLowerCase()
                                 .contains(searchRequest.getName().toLowerCase())&&
                                         searchRequest.getActive().equals(user.getActive()))
-                        .sorted(Comparator.comparing(UserDTO::getId))
+                        .sorted(Comparator.comparing(UserDTO::getIdGhost))
                         .collect(Collectors.toList());
             }
         }    
