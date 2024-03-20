@@ -52,8 +52,8 @@ export class UpdateUserComponent implements OnInit {
         this.user = res;
         if (res) {
           this.scheda.patchValue(res);
-          this.lawyersToAdd=res.lawyerDTOList;
-          this.extStructuresToAdd=res.externalStructureDTOList;
+          this.lawyersToAdd = res.lawyerDTOList;
+          this.extStructuresToAdd = res.externalStructureDTOList;
         }
       }
     });
@@ -126,6 +126,8 @@ export class UpdateUserComponent implements OnInit {
   update(): void {
     const userData: UserDTO = this.scheda.value;
     userData.id = this.userId;
+    
+
     userData.externalStructureDTOList = this.extStructuresToAdd;
     userData.lawyerDTOList = this.lawyersToAdd;
     this.userService.update(userData).subscribe(

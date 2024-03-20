@@ -18,6 +18,9 @@ export class CardComponent{
   formattedBirthDate: string = "";
 
   constructor(private router: Router, private datePipe: DatePipe) {}
+  
+
+
 
   ngOnInit() {
     this.formatDates();

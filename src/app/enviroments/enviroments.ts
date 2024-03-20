@@ -4,3 +4,5 @@ export const environment = {
     port:  '8090',
     apiVersion: "/api/v1/",
   };
+
+  //      ng serve --host 192.168.1.66

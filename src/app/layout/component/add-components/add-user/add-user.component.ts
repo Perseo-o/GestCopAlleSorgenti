@@ -127,7 +127,6 @@ formatDates(): void {
     const userData: UserDTO = this.scheda.value;
     userData.externalStructureDTOList = this.extStructuresToAdd;
     userData.lawyerDTOList = this.lawyersToAdd;
-    console.log(userData);
     this.userService.create(userData).subscribe(
       (response) => {
         console.log("Utente creato con successo:", response);
