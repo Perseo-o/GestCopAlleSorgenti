@@ -3,6 +3,7 @@ import { LawyerDTO } from "./lawyer.model";
 
 export interface UserDTO {
     id: number;
+    idGhost: number;
     site: Site;
     name: string;
     surname: string;

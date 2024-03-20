@@ -15,7 +15,6 @@ export class UserService extends AbstractService<UserDTO>{
   }
 
 
-  
   search(req: SearchRequest): Observable<UserDTO[]> {
     return this.http.post<UserDTO[]>(`${this.baseUrl}search`, req);
   }

@@ -22,6 +22,10 @@ export class AddUserComponent implements OnInit {
   selectedLawyer!: LawyerDTO;
   selectedExternalStructure!: ExternalStructureDTO;
 
+  formattedBirthDate: string = "";
+  formattedDateIngIta: string = "";
+  formattedDateIngStrut: string = "";
+
   constructor(
     private userService: UserService,
     private datePipe: DatePipe,
@@ -63,10 +67,22 @@ export class AddUserComponent implements OnInit {
     });
   }
 
+formatDates(): void {
+    if (this.scheda.value.birthDate) {
+      this.formattedBirthDate = this.datePipe.transform(this.scheda.value.birthDate, 'dd/MM/yyyy') || '';
+    }
+    if (this.scheda.value.ingIta) {
+      this.formattedDateIngIta = this.datePipe.transform(this.scheda.value.ingIta, 'dd/MM/yyyy') || '';
+    }
+    if (this.scheda.value.ingStrut) {
+      this.formattedDateIngStrut = this.datePipe.transform(this.scheda.value.ingStrut, 'dd/MM/yyyy') || '';
+    }
+  }
 
 
   initForm(): void {
     this.scheda = this.formBuilder.group({
+      idGhost: [''],
       site: [''],
       name: [''],
       surname: [''],
@@ -109,6 +125,9 @@ export class AddUserComponent implements OnInit {
 
   add(): void {
     const userData: UserDTO = this.scheda.value;
+    userData.externalStructureDTOList = this.extStructuresToAdd;
+    userData.lawyerDTOList = this.lawyersToAdd;
+    console.log(userData);
     this.userService.create(userData).subscribe(
       (response) => {
         console.log("Utente creato con successo:", response);

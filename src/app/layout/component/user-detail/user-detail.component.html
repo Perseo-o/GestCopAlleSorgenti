@@ -11,12 +11,16 @@
         <button mat-flat-button class="update" (click)="userUpdate()"><b>Aggiorna Dati Utente</b></button>
     </div>
     <div class="scheda" id="scheda">
-        <div class="title"><b>ALLE SORGENTI - PROGETTO A</b></div>
-        <div class="sub-title"><b>SCHEDA OSPITE</b></div>
-
+        <div style="display: flex;">
+            <div class="logo"></div>
+            <div>
+                <div class="title"><b>ALLE SORGENTI - PROGETTO A</b></div>
+                <div class="sub-title"><b>SCHEDA OSPITE</b></div>
+            </div>
+        </div>
         <div class="contenuto">
 
-            <p>ID OSPITE: <b>{{user.id}}</b></p>   
+            <p>ID OSPITE: <b>{{user.idGhost}}</b></p>   
 
             <p>NOME: <b>{{user.name}}</b></p>
 
@@ -34,14 +38,19 @@
 
             <p>DATA DI INGRESSO IN STRUTTURA: <b>{{formattedDateIngStrut}}</b></p>
             
-            <p>RESIDENZA: <b>{{user.site}}</b></p>
+            <p>RESIDENZA: <b><ng-container *ngIf="user.site=='COP_SORG_IGL'; else viaMonte">
+                VIA IGLESIAS 82
+              </ng-container>
+              <ng-template #viaMonte>
+                VIA DEL MONTE 36
+              </ng-template></b></p>
 
             <p>ID VESTANET: <b>{{user.idVestanet}}</b></p>
 
-            <p>SITUAZIONE GIURIDICA: {{ user.legalSituation }}</p>
+            <p>SITUAZIONE GIURIDICA: <b>{{ user.legalSituation }}</b></p>
 
             
-            <div *ngIf="true">
+            <div *ngIf="user.lawyerDTOList.length>0">
                 <div class="message">Avvocati:</div>
                 <ng-container *ngFor="let lawyer of user.lawyerDTOList">
                 <!-- Assicurati che i dati degli avvocati siano strutturati correttamente -->
@@ -50,7 +59,7 @@
                 </ng-container>
             </div>
             
-                <div class="message" *ngIf="user && user.externalStructureDTOList">
+                <div class="message" *ngIf="user.externalStructureDTOList.length>0">
                     Strutture precedenti:
                 </div>
                 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">

@@ -24,6 +24,8 @@
   margin-right: 5mm;
 }
 
+
+
 .create-pdf:hover{
   background-color: #3835DE;
 }
@@ -70,13 +72,20 @@
   background-color: rgb(255, 255, 255);
 }
 
+.logo{
+  background: url('../../../utils/image/Logo.png') no-repeat center / cover;
+    height: 30mm;
+    width: 30mm;
+    margin: 20px;
+}
+
 .title{
-  padding: 20mm 47mm 20mm 47mm;
+  padding: 20mm 8mm 20mm 8mm;
   font-size: 30px;
 }
 
 .sub-title{
-  margin: 0 82mm 0 82mm;
+  margin-left: 45mm;
   font-size: 20px;
 }
 

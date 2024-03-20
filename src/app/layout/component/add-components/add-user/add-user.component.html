@@ -10,6 +10,11 @@
         <div class="contenuto">
             <form  [formGroup]="scheda">
                 
+                <mat-form-field appearance="outline" class="formaInput" style="width: 170mm;">
+                    <mat-label>ID</mat-label>
+                    <input matInput type="text" name="idGhost" formControlName="idGhost">
+                </mat-form-field>
+                
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>NOME</mat-label>
                     <input matInput type="text" name="name" formControlName="name">

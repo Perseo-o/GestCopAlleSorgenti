@@ -84,6 +84,7 @@ export class UpdateUserComponent implements OnInit {
 
   initForm(): void {
     this.scheda = this.formBuilder.group({
+      idGhost: [''],
       site: [''],
       name: [''],
       surname: [''],
