@@ -19,6 +19,7 @@ public class UserConverter extends AbstractConverter<User, UserDTO> {
         if (userDTO != null) {
             user = new User(
                     userDTO.getId(),
+                    userDTO.getIdGhost(),
                     userDTO.getSite(),
                     userDTO.getName(),
                     userDTO.getSurname(),
@@ -43,6 +44,7 @@ public class UserConverter extends AbstractConverter<User, UserDTO> {
         if (user != null) {
             userDTO = new UserDTO(
                     user.getId(),
+                    user.getIdGhost(),
                     user.getSite(),
                     user.getName(),
                     user.getSurname(),

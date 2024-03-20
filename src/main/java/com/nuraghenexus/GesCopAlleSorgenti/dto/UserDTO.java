@@ -15,6 +15,7 @@ import java.util.List;
 public class UserDTO {
     private Long id;
 
+    private Long idGhost;
     private Site site;
     private String name;
     private String surname;

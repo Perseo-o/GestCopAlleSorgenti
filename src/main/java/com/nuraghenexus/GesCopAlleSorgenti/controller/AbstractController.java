@@ -26,7 +26,7 @@ public abstract class AbstractController<DTO> {
 
     @PostMapping("create")
     public DTO create(@RequestBody DTO dto) {
-        return service.create(dto);
+        System.out.println(dto);return service.create(dto);
     }
 
     @GetMapping("read")
