@@ -5,8 +5,8 @@ import { UserDTO } from '../../../../models/user.model';
 import { UserService } from '../../../../services/user.service';
 import { LawyerService } from '../../../../services/lawyer.service';
 import { LawyerDTO } from '../../../../models/lawyer.model';
-import { ExternalStructureService } from '../../../../services/external-structure.service';
-import { ExternalStructureDTO } from '../../../../models/externalStructure.model';
+import { DoctorService } from '../../../../services/doctor.service';
+import { DoctorDTO } from '../../../../models/doctor.model';
 
 @Component({
   selector: 'app-add-user',
@@ -17,10 +17,10 @@ export class AddUserComponent implements OnInit {
   scheda!: FormGroup;
   lawyers: LawyerDTO[] = [];
   lawyersToAdd: LawyerDTO[] = [];
-  extStructures: ExternalStructureDTO[] = [];
-  extStructuresToAdd: ExternalStructureDTO[] = [];
+  doctors: DoctorDTO[] = [];
+  doctorsToAdd: DoctorDTO[] = [];
   selectedLawyer!: LawyerDTO;
-  selectedExternalStructure!: ExternalStructureDTO;
+  selectedDoctor!: DoctorDTO;
 
   formattedBirthDate: string = "";
   formattedDateIngIta: string = "";
@@ -31,13 +31,13 @@ export class AddUserComponent implements OnInit {
     private datePipe: DatePipe,
     private formBuilder: FormBuilder,
     private lawyerService: LawyerService,
-    private exteStructureService: ExternalStructureService
+    private doctorService: DoctorService
   ) {}
 
   ngOnInit(): void {
     this.initForm();
     this.getAllLawyers();
-    this.getAllExtStructure();
+    this.getAllDoctor();
   }
 
 
@@ -54,11 +54,11 @@ export class AddUserComponent implements OnInit {
     });
   }
 
-  getAllExtStructure(): void {
-    this.exteStructureService.getAll().subscribe({
-      next: (res: ExternalStructureDTO[]) => {
+  getAllDoctor(): void {
+    this.doctorService.getAll().subscribe({
+      next: (res: DoctorDTO[]) => {
         if (res) {
-          this.extStructures = res;
+          this.doctors = res;
         }
       },
       error: (error: any) => {
@@ -96,7 +96,7 @@ formatDates(): void {
       legalSituation: [''],
       active: true,
       lawyerDTOList: this.lawyersToAdd,
-      externalStructureDTOList: this.extStructuresToAdd
+      doctorDTOList: this.doctorsToAdd
     });
   }
 
@@ -111,21 +111,21 @@ formatDates(): void {
     this.lawyersToAdd = this.lawyersToAdd.filter((x)=> x.id!=lawyerDTO.id);
   }
 
-  addExternalStructure(exStru: ExternalStructureDTO) {
+  addDoctor(exStru: DoctorDTO) {
     if(exStru){
-      this.extStructuresToAdd.push(exStru);
+      this.doctorsToAdd.push(exStru);
     }
   }
 
-  removeExternalStructure(exStr: ExternalStructureDTO) {
-    this.extStructuresToAdd = this.extStructuresToAdd.filter((x)=> x.id!=exStr.id);
+  removeDoctor(exStr: DoctorDTO) {
+    this.doctorsToAdd = this.doctorsToAdd.filter((x)=> x.id!=exStr.id);
   }
 
 
 
   add(): void {
     const userData: UserDTO = this.scheda.value;
-    userData.externalStructureDTOList = this.extStructuresToAdd;
+    userData.doctorDTOList = this.doctorsToAdd;
     userData.lawyerDTOList = this.lawyersToAdd;
     this.userService.create(userData).subscribe(
       (response) => {

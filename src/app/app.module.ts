@@ -17,9 +17,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddLawyerComponent } from './layout/component/add-components/add-lawyer/add-lawyer.component';
-import { AddExternalStructureComponent } from './layout/component/add-components/add-external-structure/add-external-structure.component';
 import { AddGeneralComponent } from './layout/component/add-general/add-general.component';
 import { UpdateUserComponent } from './layout/component/update-user/update-user.component';
+import { AddDoctorComponent } from './layout/component/add-components/add-doctor/add-doctor.component';
 
 
 @NgModule({
@@ -31,9 +31,10 @@ import { UpdateUserComponent } from './layout/component/update-user/update-user.
     UserDetailComponent,
     AddUserComponent,
     AddLawyerComponent,
-    AddExternalStructureComponent,
+    AddDoctorComponent,
     AddGeneralComponent,
-    UpdateUserComponent
+    UpdateUserComponent,
+    AddDoctorComponent
   ],
   imports: [
     BrowserModule,

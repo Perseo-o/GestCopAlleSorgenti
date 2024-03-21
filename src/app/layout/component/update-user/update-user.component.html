@@ -94,21 +94,21 @@
                     <div style="width: 77mm;">
                         <mat-form-field appearance="outline" style="width: 55mm;">
                             <mat-label>STRUTTURE PRECEDENTI</mat-label>
-                            <mat-select formControlName="externalStructureDTOList" [(ngModel)]="selectedExternalStructure">
-                                <mat-option *ngFor="let extStructure of extStructures" [value]="extStructure">{{ extStructure.refNumber }}</mat-option>
+                            <mat-select formControlName="doctorDTOList" [(ngModel)]="selectedDoctor">
+                                <mat-option *ngFor="let doctor of doctors" [value]="doctor">{{ doctor.name }}</mat-option>
                             </mat-select>
                         </mat-form-field>
 
-                        <button mat-flat-button color="primary" (click)="addExternalStructure(selectedExternalStructure)" class="addButton">ADD</button>
+                        <button mat-flat-button color="primary" (click)="addDoctor(selectedDoctor)" class="addButton">ADD</button>
 
-                        <div *ngIf="extStructuresToAdd">
-                            <div formArrayName="externalStructureDTOList">
-                                <div *ngFor="let externalStructureControl of extStructuresToAdd">
+                        <div *ngIf="doctorsToAdd">
+                            <div formArrayName="DoctorDTOList">
+                                <div *ngFor="let DoctorControl of doctorsToAdd">
                                     <mat-form-field appearance="outline">
                                         <mat-label>Codice Struttura</mat-label>
-                                        <input matInput [value]="externalStructureControl.refNumber">
+                                        <input matInput [value]="DoctorControl.name">
                                     </mat-form-field>
-                                    <button mat-button color="warn" (click)="removeExternalStructure(externalStructureControl)" class="deleteButt">Elimina</button>
+                                    <button mat-button color="warn" (click)="removeDoctor(DoctorControl)" class="deleteButt">Elimina</button>
                                 </div>
                             </div>
                         </div>

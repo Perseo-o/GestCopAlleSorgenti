@@ -68,11 +68,11 @@
             </div>
             
                 <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-                <ng-container *ngIf="user.externalStructureDTOList">
-                    <div *ngFor="let structure of user.externalStructureDTOList" style="width: 70mm">
+                <ng-container *ngIf="user.doctorDTOList">
+                    <div *ngFor="let structure of user.doctorDTOList" style="width: 70mm">
                     <!-- Assicurati che i dati delle strutture esterne siano strutturati correttamente -->
-                    <p>NR. RIF. : <b>{{ structure.refNumber}}</b></p>
-                    <p>Residenza: <b>{{ structure.residence}}</b></p>
+                    <p>NR. RIF. : <b>{{ structure.name}}</b></p>
+                    <p>Residenza: <b>{{ structure.contDetails}}</b></p>
                     </div>
                 </ng-container>
             </div> 

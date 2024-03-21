@@ -1,20 +1,21 @@
+
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ExternalStructureService } from '../../../../services/external-structure.service';
-import { ExternalStructureDTO } from '../../../../models/externalStructure.model';
+import { DoctorService } from '../../../../services/doctor.service';
+import { DoctorDTO } from '../../../../models/doctor.model';
 
 @Component({
-  selector: 'app-add-external-structure',
-  templateUrl: './add-external-structure.component.html',
-  styleUrls: ['./add-external-structure.component.scss']
+  selector: 'app-add-doctor',
+  templateUrl: './add-doctor.component.html',
+  styleUrls: ['./add-doctor.component.scss']
 })
-export class AddExternalStructureComponent {
+export class AddDoctorComponent {
 
-    schedaAvv!: FormGroup;
+    schedaDoc!: FormGroup;
   
     constructor(
-      private externalStructureService: ExternalStructureService,
+      private doctorService: DoctorService,
       private datePipe: DatePipe,
       private formBuilder: FormBuilder
     ) {}
@@ -24,15 +25,15 @@ export class AddExternalStructureComponent {
     }
   
     initForm(): void {
-      this.schedaAvv = this.formBuilder.group({
+      this.schedaDoc = this.formBuilder.group({
         refNumber: [''],
         residence: ['']
       });
     }
   
     add(): void {
-      const exStruttData: ExternalStructureDTO = this.schedaAvv.value;
-      this.externalStructureService.create(exStruttData).subscribe(
+      const doctorData: DoctorDTO = this.schedaDoc.value;
+      this.doctorService.create(doctorData).subscribe(
         (response) => {
           console.log("Utente creato con successo:", response);
           // Aggiungi qui eventuali operazioni supplementari dopo la creazione dell'utente

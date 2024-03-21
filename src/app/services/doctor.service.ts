@@ -2,14 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AbstractService } from './abstract.service';
 import { Observable } from 'rxjs';
-import { ExternalStructureDTO } from '../models/externalStructure.model';
+import { DoctorDTO } from '../models/doctor.model';
 
 @Injectable({ providedIn: 'root' })
-export class ExternalStructureService extends AbstractService<ExternalStructureDTO>{
+export class DoctorService extends AbstractService<DoctorDTO>{
   
   constructor(http: HttpClient) {
     super(http);
-    this.type = 'externalStructure/';
+    this.type = 'doctor/';
     this.baseUrl += this.type;
   }
 

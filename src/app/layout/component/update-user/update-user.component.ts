@@ -7,8 +7,8 @@ import { UserDTO } from '../../../models/user.model';
 import { UserService } from '../../../services/user.service';
 import { LawyerDTO } from '../../../models/lawyer.model';
 import { LawyerService } from '../../../services/lawyer.service';
-import { ExternalStructureDTO } from '../../../models/externalStructure.model';
-import { ExternalStructureService } from '../../../services/external-structure.service';
+import { DoctorDTO } from '../../../models/doctor.model';
+import { DoctorService } from '../../../services/doctor.service';
 
 @Component({
   selector: 'app-update-user',
@@ -21,10 +21,10 @@ export class UpdateUserComponent implements OnInit {
   scheda!: FormGroup;
   lawyers: LawyerDTO[] = [];
   lawyersToAdd: LawyerDTO[] = [];
-  extStructures: ExternalStructureDTO[] = [];
-  extStructuresToAdd: ExternalStructureDTO[] = [];
+  doctors: DoctorDTO[] = [];
+  doctorsToAdd: DoctorDTO[] = [];
   selectedLawyer!: LawyerDTO;
-  selectedExternalStructure!: ExternalStructureDTO;
+  selectedDoctor!: DoctorDTO;
   user!: UserDTO;
 
   constructor(
@@ -33,14 +33,14 @@ export class UpdateUserComponent implements OnInit {
     private datePipe: DatePipe,
     private formBuilder: FormBuilder,
     private lawyerService: LawyerService,
-    private extStructureService: ExternalStructureService,
+    private doctorService: DoctorService,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.initForm();
     this.getAllLawyers();
-    this.getAllExtStructure();
+    this.getAllDoctor();
 
     this.userId = this.route.snapshot.params['n'];
     this.read(this.userId);
@@ -53,7 +53,7 @@ export class UpdateUserComponent implements OnInit {
         if (res) {
           this.scheda.patchValue(res);
           this.lawyersToAdd = res.lawyerDTOList;
-          this.extStructuresToAdd = res.externalStructureDTOList;
+          this.doctorsToAdd = res.doctorDTOList;
         }
       }
     });
@@ -71,10 +71,10 @@ export class UpdateUserComponent implements OnInit {
     });
   }
 
-  getAllExtStructure(): void {
-    this.extStructureService.getAll().subscribe({
-      next: (res: ExternalStructureDTO[]) => {
-        this.extStructures = res || [];
+  getAllDoctor(): void {
+    this.doctorService.getAll().subscribe({
+      next: (res: DoctorDTO[]) => {
+        this.doctors = res || [];
       },
       error: (error: any) => {
         console.error('Error fetching external structures:', error);
@@ -98,7 +98,7 @@ export class UpdateUserComponent implements OnInit {
       legalSituation: [''],
       active: true,
       lawyerDTOList: this.lawyersToAdd,
-      externalStructureDTOList: this.extStructuresToAdd
+      doctorDTOList: this.doctorsToAdd
     });
   }
 
@@ -113,14 +113,14 @@ export class UpdateUserComponent implements OnInit {
     this.lawyersToAdd = this.lawyersToAdd.filter((x)=> x.id!=lawyerDTO.id);
   }
 
-  addExternalStructure(exStru: ExternalStructureDTO) {
-    if(exStru){
-      this.extStructuresToAdd.push(exStru);
+  addDoctor(doctor: DoctorDTO) {
+    if(doctor){
+      this.doctorsToAdd.push(doctor);
     }
   }
 
-  removeExternalStructure(exStr: ExternalStructureDTO) {
-    this.extStructuresToAdd = this.extStructuresToAdd.filter((x)=> x.id!=exStr.id);
+  removeDoctor(doctor: DoctorDTO) {
+    this.doctorsToAdd = this.doctorsToAdd.filter((x)=> x.id!=doctor.id);
   }
 
   update(): void {
@@ -128,7 +128,7 @@ export class UpdateUserComponent implements OnInit {
     userData.id = this.userId;
     
 
-    userData.externalStructureDTOList = this.extStructuresToAdd;
+    userData.doctorDTOList = this.doctorsToAdd;
     userData.lawyerDTOList = this.lawyersToAdd;
     this.userService.update(userData).subscribe(
       (response) => {
