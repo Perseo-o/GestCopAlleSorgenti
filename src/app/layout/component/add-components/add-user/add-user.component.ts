@@ -15,11 +15,13 @@ import { DoctorDTO } from '../../../../models/doctor.model';
 })
 export class AddUserComponent implements OnInit { 
   scheda!: FormGroup;
+
   lawyers: LawyerDTO[] = [];
   lawyersToAdd: LawyerDTO[] = [];
+  selectedLawyer!: LawyerDTO;
+
   doctors: DoctorDTO[] = [];
   doctorsToAdd: DoctorDTO[] = [];
-  selectedLawyer!: LawyerDTO;
   selectedDoctor!: DoctorDTO;
 
   formattedBirthDate: string = "";
@@ -83,18 +85,25 @@ formatDates(): void {
   initForm(): void {
     this.scheda = this.formBuilder.group({
       idGhost: [''],
-      site: [''],
-      name: [''],
+      idHeadFamily: [''],
+      idVestanet: [''],
+      idCui: [''],
       surname: [''],
-      nationState: [''],
-      nationality: [''],
+      name: [''],
       birthDate: [''],
+      sex: [''],
+      nationState: [''],
       codFiscal: [''],
+      site: [''],
       dateIngIta: [''],
       dateIngStrut: [''],
-      idVestanet: [''],
+      formC3: [''],
+      expiryPermit: [''],
+      languages: [''],
+      schooling: [''],
       legalSituation: [''],
       active: true,
+      note: [''],
       lawyerDTOList: this.lawyersToAdd,
       doctorDTOList: this.doctorsToAdd
     });

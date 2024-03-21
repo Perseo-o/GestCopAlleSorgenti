@@ -26,8 +26,8 @@ export class AddDoctorComponent {
   
     initForm(): void {
       this.schedaDoc = this.formBuilder.group({
-        refNumber: [''],
-        residence: ['']
+        name: [''],
+        contDetails: ['']
       });
     }
   

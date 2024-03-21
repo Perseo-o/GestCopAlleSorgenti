@@ -13,23 +13,20 @@
 }
 .scheda{
   width: 210mm;
-  height: 297mm;
+  height: 350mm;
   background-color: white;
+  margin-bottom: 10mm;
 }
 
-.title{
-  margin: 10mm 47mm 20mm 47mm;
-  font-size: 30px;
-  padding-top: 20mm;
-}
 
 .sub-title{
-  margin: 0 75mm 0 75mm;
+  margin-top: 10mm;
+  padding: 10mm 75mm 0 75mm;
   font-size: 20px;
 }
 
 .contenuto{
-  padding: 15mm 20mm 0 20mm;
+  padding: 10mm 20mm 0 20mm;
   width: 100%;
 }
 .message{

@@ -22,9 +22,11 @@
 
             <p>ID OSPITE: <b>{{user.idGhost}}</b></p>
 
+            <div *ngIf="user.idHeadFamily"><p>ID CODICE CAPO FAMIGLIA: <b>{{user.idHeadFamily}}</b></p></div>
+
             <p>ID VESTANET: <b>{{user.idVestanet}}</b></p>
 
-            <!--CODICE CUI--><p>CODICE CUI: <b>06QQXLZ</b></p>
+            <p>CODICE CUI: <b>{{user.idCui}}</b></p>
 
             <p>COGNOME: <b>{{user.surname}}</b></p>
 
@@ -32,7 +34,13 @@
 
             <p>DATA DI NASCITA: <b>{{formattedBirthDate}}</b></p>
 
-            <!--SESSO--><p>SESSO: <b>MASCHIO</b></p>
+            <p>SESSO: <b><ng-container *ngIf="user.sex=='MALE'; else female">
+                MASCHIO
+              </ng-container>
+              <ng-template #female>
+                FEMMINA
+              </ng-template></b>
+            </p>
 
             <p>STATO DI NASCITA: <b>{{user.nationState}}</b></p>
 
@@ -43,43 +51,47 @@
               </ng-container>
               <ng-template #viaMonte>
                 VIA DEL MONTE 36 - VILLACIDRO(VS)
-              </ng-template></b></p>
+              </ng-template></b>
+            </p>
 
             <p>DATA DI INGRESSO IN ITALIA: <b>{{formattedDateIngIta}}</b></p>
 
             <p>DATA DI ARRIVO IN STRUTTURA: <b>{{formattedDateIngStrut}}</b></p>
 
-            <!--DATA FORMALIZAZZIONE C3--><p>DATA FORMALIZAZZIONE C3: <b>{{formattedDateIngStrut}}</b></p>
+            <p>DATA FORMALIZAZZIONE C3: <b>{{formattedFormC3}}</b></p>
 
-            <!--DATA SCADENZA PERMESSO DI SOGGIORNO--><p>DATA SCADENZA PERMESSO: <b>{{formattedDateIngStrut}}</b></p>
+            <p>DATA SCADENZA PERMESSO DI SOGGIORNO: <b>{{formattedExpiryPermit}}</b></p>
 
-            <!--LINGUE--><p>LINGUE: <b>FRANCESE: A2; INGLESE: B1</b></p>
+            <p>LINGUE: <b>{{user.languages}}</b></p>
 
-            <!--SCOLARIZAZZIONE--><p>SCOLARIZAZZIONE: <b>TEXT AREA</b></p>
+            <p>SCOLARIZAZZIONE: <b>{{user.schooling}}</b></p>
 
             <p >SITUAZIONE GIURIDICA: <b>{{ user.legalSituation }}</b></p>
             
-            <div *ngIf="user.lawyerDTOList.length>0">
+            <div *ngIf="user.lawyerDTOList.length>0" style="margin-bottom: 5mm;">
                 <ng-container *ngFor="let lawyer of user.lawyerDTOList">
-                <!-- Assicurati che i dati degli avvocati siano strutturati correttamente -->
-                <p>AVVOCATO: <b>{{ lawyer.name }}</b></p>
-                <p><b>{{ lawyer.contDetails }}</b></p>
+                        
+                    <p>AVVOCATO: <b>{{ lawyer.name }}</b></p>
+                    <div class="description"><b>{{ lawyer.contDetails }}</b></div>
                 </ng-container>
             </div>
             
-                <div style="display: flex; justify-content: space-between; flex-wrap: wrap;">
-                <ng-container *ngIf="user.doctorDTOList">
-                    <div *ngFor="let structure of user.doctorDTOList" style="width: 70mm">
-                    <!-- Assicurati che i dati delle strutture esterne siano strutturati correttamente -->
-                    <p>NR. RIF. : <b>{{ structure.name}}</b></p>
-                    <p>Residenza: <b>{{ structure.contDetails}}</b></p>
-                    </div>
+            <div *ngIf="user.doctorDTOList.length" style="margin-bottom: 5mm;">
+                <ng-container *ngFor="let structure of user.doctorDTOList">
+                        
+                    <p>NAME. : <b>{{ structure.name}}</b></p>
+                    <div class="description"> <b>{{ structure.contDetails}}</b></div>
                 </ng-container>
             </div> 
             
-            <p>NOTE: <b>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type speries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularisedpsum passages, </b></p>
-             
-            
+            <p>NOTE: <b><ng-container *ngIf="user.note; else estetic">
+                {{user.note}}
+              </ng-container>
+              <ng-template #estetic>
+                -
+              </ng-template></b>
+            </p>
+
         </div>
         
     </div>

@@ -21,6 +21,8 @@ export class UserDetailComponent implements OnInit {
   formattedBirthDate: string = "";
   formattedDateIngIta: string = "";
   formattedDateIngStrut: string = "";
+  formattedFormC3: string = "";
+  formattedExpiryPermit: string = "";
 
 
   constructor(
@@ -84,6 +86,15 @@ export class UserDetailComponent implements OnInit {
     if (this.user.dateIngStrut) {
       this.formattedDateIngStrut = this.datePipe.transform(this.user.dateIngStrut, 'dd/MM/yyyy') || '';
     }
+    if (this.user.formC3) {
+      this.formattedFormC3 = this.datePipe.transform(this.user.dateIngStrut, 'dd/MM/yyyy') || '';
+    }
+    if (this.user.expiryPermit) {
+      this.formattedExpiryPermit = this.datePipe.transform(this.user.dateIngStrut, 'dd/MM/yyyy') || '';
+    }
+
+
+    
   }
 
   convert(){

@@ -1,57 +1,64 @@
 <div class="body">
-
     
     <button mat-flat-button color="primary" class="add-user" (click)="add()"><b>Aggiungi nuovo ospite</b></button> 
 
     <div class="scheda">
-        <div class="title"><b>ALLE SORGENTI - PROGETTO A</b></div>
         <div class="sub-title"><b>SCHEDA NUOVO OSPITE</b></div>
 
         <div class="contenuto">
             <form  [formGroup]="scheda">
                 
-                <mat-form-field appearance="outline" class="formaInput" style="width: 170mm;">
+                <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>ID</mat-label>
-                    <input matInput type="text" name="idGhost" formControlName="idGhost">
+                    <input matInput type="text" formControlName="idGhost">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput">
-                    <mat-label>NOME</mat-label>
-                    <input matInput type="text" name="name" formControlName="name">
+                    <mat-label>ID CAPO FAMIGLIA</mat-label>
+                    <input matInput type="text" formControlName="idHeadFamily">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>ID VESTANET</mat-label>
+                    <input matInput type="text" formControlName="idVestanet">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>CODICE CUI</mat-label>
+                    <input matInput type="text" formControlName="idCui">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>COGNOME</mat-label>
-                    <input matInput type="text" name="surname" formControlName="surname">
+                    <input matInput type="text" formControlName="surname">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput">
-                    <mat-label>STATO DI NASCITA</mat-label>
-                    <input matInput type="text" name="nationState" formControlName="nationState">
+                    <mat-label>NOME</mat-label>
+                    <input matInput type="text" formControlName="name">
                 </mat-form-field>
                 
-                <mat-form-field appearance="outline" class="formaInput">
-                    <mat-label>NAZIONALITA'</mat-label>
-                    <input matInput type="text"  formControlName="nationality">
-                </mat-form-field>
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>DATA DI NASCITA</mat-label>
                     <input matInput type="date" formControlName="birthDate">
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>SESSO</mat-label>
+                    <mat-select formControlName="sex">
+                        <mat-option value="MALE">MASCHIO</mat-option>
+                        <mat-option value="FEMALE">FEMMINA</mat-option>
+                    </mat-select>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>STATO DI NASCITA</mat-label>
+                    <input matInput type="text" formControlName="nationState">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput">
                     <mat-label>CODICE FISCALE</mat-label>
                     <input matInput type="text" formControlName="codFiscal">
-                </mat-form-field>
-                
-                <mat-form-field appearance="outline" class="formaInput">
-                    <mat-label>DATA DI INGRESSO IN ITALIA</mat-label>
-                    <input matInput type="date" formControlName="dateIngIta">
-                </mat-form-field>
-                
-                <mat-form-field appearance="outline" class="formaInput">
-                    <mat-label>DATA DI INGRESSO IN STRUTTURA</mat-label>
-                    <input matInput type="date" formControlName="dateIngStrut">
                 </mat-form-field>
 
                 <mat-form-field appearance="outline" class="formaInput">
@@ -63,13 +70,43 @@
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput">
-                    <mat-label>ID VESTANET</mat-label>
-                    <input matInput type="text" formControlName="idVestanet">
+                    <mat-label>DATA DI INGRESSO IN ITALIA</mat-label>
+                    <input matInput type="date" formControlName="dateIngIta">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>DATA DI INGRESSO IN STRUTTURA</mat-label>
+                    <input matInput type="date" formControlName="dateIngStrut">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>DATA FORMALIZAZZIONE C3</mat-label>
+                    <input matInput type="date" formControlName="formC3">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>DATA SCADENZA PERMESSO DI SOGGIORNO</mat-label>
+                    <input matInput type="date" formControlName="expiryPermit">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>LINGUE</mat-label>
+                    <input matInput type="text" formControlName="languages">
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput">
+                    <mat-label>SCOLARIZAZZIONE</mat-label>
+                    <input matInput type="text" formControlName="schooling">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput" style="width: 170mm;">
                     <mat-label>SITUAZIONE GIURIDICA</mat-label>
-                    <textarea matInput type="text" style="background-color: white;" formControlName="legalSituation"></textarea>
+                    <textarea matInput type="text" formControlName="legalSituation"></textarea>
+                </mat-form-field>
+                
+                <mat-form-field appearance="outline" class="formaInput" style="width: 170mm;">
+                    <mat-label>NOTE</mat-label>
+                    <textarea matInput type="text" formControlName="note"></textarea>
                 </mat-form-field>
 
                 <div style="display: flex; justify-content: space-between; width: 170mm;" >
@@ -99,22 +136,22 @@
 
                     <div style="width: 77mm;">
                         <mat-form-field appearance="outline" style="width: 55mm;">
-                            <mat-label>STRUTTURE PRECEDENTI</mat-label>
-                            <mat-select formControlName="externalStructureDTOList" [(ngModel)]="selectedExternalStructure">
-                                <mat-option *ngFor="let extStructure of extStructures" [value]="extStructure">{{ extStructure.refNumber }}</mat-option>
+                            <mat-label>DOTTORE</mat-label>
+                            <mat-select formControlName="doctorDTOList" [(ngModel)]="selectedDoctor">
+                                <mat-option *ngFor="let doctor of doctors" [value]="doctor">{{ doctor.name }}</mat-option>
                             </mat-select>
                         </mat-form-field>
 
-                        <button mat-flat-button color="primary" (click)="addExternalStructure(selectedExternalStructure)" class="addButton">ADD</button>
+                        <button mat-flat-button color="primary" (click)="addDoctor(selectedDoctor)" class="addButton">ADD</button>
 
-                        <div *ngIf="extStructuresToAdd">
-                            <div formArrayName="externalStructureDTOList">
-                                <div *ngFor="let externalStructureControl of extStructuresToAdd">
+                        <div *ngIf="doctorsToAdd">
+                            <div formArrayName="doctorDTOList">
+                                <div *ngFor="let doctorControl of doctorsToAdd">
                                     <mat-form-field appearance="outline">
                                         <mat-label>Codice Struttura</mat-label>
-                                        <input matInput [value]="externalStructureControl.refNumber">
+                                        <input matInput [value]="doctorControl.name">
                                     </mat-form-field>
-                                    <button mat-button color="warn" (click)="removeExternalStructure(externalStructureControl)" class="deleteButt">Elimina</button>
+                                    <button mat-button color="warn" (click)="removeDoctor(doctorControl)" class="deleteButt">Elimina</button>
                                 </div>
                             </div>
                         </div>
@@ -127,4 +164,7 @@
         </div>
         
     </div>
+    
+    <button mat-flat-button color="primary" class="add-user" (click)="add()" style="margin-bottom: 30px;"><b>Aggiungi nuovo ospite</b></button> 
+
 </div>

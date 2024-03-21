@@ -1,21 +1,21 @@
 <div class="body">
 
-    <button mat-flat-button color="primary" class="add-user" (click)="add()"><b>Aggiungi nuova Stuttura Esterna</b></button> 
+    <button mat-flat-button color="primary" class="add-user" (click)="add()"><b>Aggiungi nuovo Dottore</b></button> 
 
     <div class="scheda">
-        <div class="title"><b>Struttura Esterna</b></div>
+        <div class="title"><b>Struttura Dottore</b></div>
 
         <div class="contenuto">
             <form  [formGroup]="schedaDoc">
                 
                 <mat-form-field appearance="outline" class="formaInput">
-                    <mat-label>NUMERO RIFERIMENTO</mat-label>
-                    <input matInput type="text" name="refNumber" formControlName="refNumber">
+                    <mat-label>NOME</mat-label>
+                    <input matInput type="text" name="name" formControlName="name">
                 </mat-form-field>
                 
                 <mat-form-field appearance="outline" class="formaInput">
-                    <mat-label>RESIDENZA</mat-label>
-                    <input matInput type="text" name="residence" formControlName="residence">
+                    <mat-label>INFO</mat-label>
+                    <input matInput type="text" name="contDetails" formControlName="contDetails">
                 </mat-form-field>
                 
             </form>
