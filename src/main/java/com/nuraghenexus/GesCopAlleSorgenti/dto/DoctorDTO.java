@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ExternalStructureDTO {
+public class DoctorDTO {
+
     private Long id;
 
-    private String refNumber;
-    private String residence;
+    private String name;
+    private String contDetails;
 }

@@ -1,5 +1,6 @@
 package com.nuraghenexus.GesCopAlleSorgenti.model;
 
+import com.nuraghenexus.GesCopAlleSorgenti.model.enumeration.Sex;
 import com.nuraghenexus.GesCopAlleSorgenti.model.enumeration.Site;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -19,24 +20,34 @@ public class User{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private Long idGhost;
-    private Site site;
-    private String name;
+
+    private Long idHeadFamily;
+    private String idVestanet;
+    private String idCui;
     private String surname;
-    private String nationState;
-    private String nationality;
+    private String name;
     private LocalDate birthDate;
+    private Sex sex;
+    private String nationState;
     private String codFiscal;
+    private Site site;
     private LocalDate dateIngIta;
     private LocalDate dateIngStrut;
+    private LocalDate formC3;
+    private LocalDate expiryPermit;
+    private String languages;
+    private String schooling;
     private String legalSituation;
-    private String idVestanet;
     private Boolean active;
-    @ManyToMany
-    private List<ExternalStructure> externalStructureList;
-
+    private String note;
     @ManyToMany
     private List<Lawyer> lawyerList;
+
+    @ManyToMany
+    private List<Doctor> doctorList;
+
 
 
 

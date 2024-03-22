@@ -1,6 +1,5 @@
 package com.nuraghenexus.GesCopAlleSorgenti.controller;
 
-import com.nuraghenexus.GesCopAlleSorgenti.dto.ImageDTO;
 import com.nuraghenexus.GesCopAlleSorgenti.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

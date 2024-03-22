@@ -5,13 +5,15 @@ import org.springframework.stereotype.Component;
 import com.nuraghenexus.GesCopAlleSorgenti.dto.UserDTO;
 import com.nuraghenexus.GesCopAlleSorgenti.model.User;
 
+import java.time.LocalDate;
+
 @Component
 public class UserConverter extends AbstractConverter<User, UserDTO> {
 
     @Autowired
     private LawyerConverter lawyerConverter;
     @Autowired
-    private ExternalStructureConverter externalStructureConverter;
+    private DoctorConverter doctorConverter;
 
     @Override
     public User toEntity(UserDTO userDTO) {
@@ -20,20 +22,27 @@ public class UserConverter extends AbstractConverter<User, UserDTO> {
             user = new User(
                     userDTO.getId(),
                     userDTO.getIdGhost(),
-                    userDTO.getSite(),
-                    userDTO.getName(),
+                    userDTO.getIdHeadFamily(),
+                    userDTO.getIdVestanet(),
+                    userDTO.getIdCui(),
                     userDTO.getSurname(),
-                    userDTO.getNationState(),
-                    userDTO.getNationality(),
+                    userDTO.getName(),
                     userDTO.getBirthDate(),
+                    userDTO.getSex(),
+                    userDTO.getNationState(),
                     userDTO.getCodFiscal(),
+                    userDTO.getSite(),
                     userDTO.getDateIngIta(),
                     userDTO.getDateIngStrut(),
+                    userDTO.getFormC3(),
+                    userDTO.getExpiryPermit(),
+                    userDTO.getLanguages(),
+                    userDTO.getSchooling(),
                     userDTO.getLegalSituation(),
-                    userDTO.getIdVestanet(),
                     userDTO.getActive(),
-                    externalStructureConverter.toEntityList(userDTO.getExternalStructureDTOList()),
-                    lawyerConverter.toEntityList(userDTO.getLawyerDTOList()));
+                    userDTO.getNote(),
+                    lawyerConverter.toEntityList(userDTO.getLawyerDTOList()),
+                    doctorConverter.toEntityList(userDTO.getDoctorDTOList()));
         }
         return user;
     }
@@ -45,20 +54,27 @@ public class UserConverter extends AbstractConverter<User, UserDTO> {
             userDTO = new UserDTO(
                     user.getId(),
                     user.getIdGhost(),
-                    user.getSite(),
-                    user.getName(),
+                    user.getIdHeadFamily(),
+                    user.getIdVestanet(),
+                    user.getIdCui(),
                     user.getSurname(),
-                    user.getNationState(),
-                    user.getNationality(),
+                    user.getName(),
                     user.getBirthDate(),
+                    user.getSex(),
+                    user.getNationState(),
                     user.getCodFiscal(),
+                    user.getSite(),
                     user.getDateIngIta(),
                     user.getDateIngStrut(),
+                    user.getFormC3(),
+                    user.getExpiryPermit(),
+                    user.getLanguages(),
+                    user.getSchooling(),
                     user.getLegalSituation(),
-                    user.getIdVestanet(),
                     user.getActive(),
-                    externalStructureConverter.toDTOList(user.getExternalStructureList()),
-                    lawyerConverter.toDTOList(user.getLawyerList()));
+                    user.getNote(),
+                    lawyerConverter.toDTOList(user.getLawyerList()),
+                    doctorConverter.toDTOList(user.getDoctorList()));
         }
         return userDTO;
     }

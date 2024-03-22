@@ -2,11 +2,8 @@ package com.nuraghenexus.GesCopAlleSorgenti.service;
 
 import com.nuraghenexus.GesCopAlleSorgenti.converter.Converter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.LinkedHashMap;
 import java.util.List;
 
 public abstract class AbstractService<Entity, DTO> implements ServiceDTO<DTO> {
