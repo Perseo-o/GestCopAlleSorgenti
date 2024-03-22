@@ -12,3 +12,24 @@
     width: 80%;
     height: 100%;
 }
+
+
+
+@media (max-width: 767px) {
+    .page{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items:start;
+        margin-top: 10px;
+    }
+    
+    .container{
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        width: 95%;
+    }
+    
+    
+}

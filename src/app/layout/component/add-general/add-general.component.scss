@@ -3,3 +3,11 @@
     display: flex;
     justify-content: space-around;
 }
+
+@media (max-width: 767px) {
+    .body{
+        background-color: #C4C3CD;
+        display: grid;
+        justify-content: start;
+    }
+}

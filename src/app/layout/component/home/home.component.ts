@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../services/user.service';
 import { SearchService } from '../../../services/search.service'; // Importa il servizio di ricerca
-import { UserDTO } from '../../../models/user.model';
+import { Site, UserDTO } from '../../../models/user.model';
 import { Option, SearchRequest } from '../../../models/requestBody/searchRequest.model';
 
 @Component({

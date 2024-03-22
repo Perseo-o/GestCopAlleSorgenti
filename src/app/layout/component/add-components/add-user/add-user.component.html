@@ -99,20 +99,20 @@
                     <input matInput type="text" formControlName="schooling">
                 </mat-form-field>
                 
-                <mat-form-field appearance="outline" class="formaInput" style="width: 170mm;">
+                <mat-form-field appearance="outline" class="formaInputText" >
                     <mat-label>SITUAZIONE GIURIDICA</mat-label>
                     <textarea matInput type="text" formControlName="legalSituation"></textarea>
                 </mat-form-field>
                 
-                <mat-form-field appearance="outline" class="formaInput" style="width: 170mm;">
+                <mat-form-field appearance="outline" class="formaInputText" >
                     <mat-label>NOTE</mat-label>
                     <textarea matInput type="text" formControlName="note"></textarea>
                 </mat-form-field>
 
-                <div style="display: flex; justify-content: space-between; width: 170mm;" >
+                <div class="exObject" >
 
-                    <div style="width: 77mm;">
-                        <mat-form-field appearance="outline" style="width: 55mm;">
+                    <div >
+                        <mat-form-field appearance="outline" >
                             <mat-label>AVVOCATO</mat-label>
                             <mat-select formControlName="lawyerDTOList" [(ngModel)]="selectedLawyer">
                                 <mat-option *ngFor="let lawyer of lawyers" [value]="lawyer">{{ lawyer.name }}</mat-option>
@@ -134,8 +134,8 @@
                         </div> 
                     </div>
 
-                    <div style="width: 77mm;">
-                        <mat-form-field appearance="outline" style="width: 55mm;">
+                    <div >
+                        <mat-form-field appearance="outline" >
                             <mat-label>DOTTORE</mat-label>
                             <mat-select formControlName="doctorDTOList" [(ngModel)]="selectedDoctor">
                                 <mat-option *ngFor="let doctor of doctors" [value]="doctor">{{ doctor.name }}</mat-option>

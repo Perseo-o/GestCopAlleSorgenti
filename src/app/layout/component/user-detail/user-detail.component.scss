@@ -21,41 +21,24 @@
   font-size: 15px;
   background-color: #434764;
   color: white;
-  margin-right: 5mm;
+  margin-right: 6mm;
 }
-
-
 
 .create-pdf:hover{
   background-color: #3835DE;
 }
 
-.disable{
-  height: 12mm;
-  width: 103mm;
-  font-size: 15px;
-  background-color: #b35959;
-  color: white;
+.pdf-div{
+  display: flex;
+  width: 50mm;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
-.disable:hover{
-  background-color: red;
-}
 
-.enable{
-  height: 12mm;
-  width: 103mm;
-  font-size: 15px;
-  background-color: #65b359;
-  color: white;
-}
-
-.enable:hover{
-  background-color: rgb(17, 255, 0);
-}
 
 .update{
-  width: 210mm;
+  width: 102mm;
   height: 12mm;
   font-size: 15px;
   background-color:#6d6da1;
@@ -65,6 +48,53 @@
   background-color: #89899c;
 }
 
+.update-div{
+  display: flex;
+  width: 65mm;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+
+
+.disable{
+  height: 12mm;
+  width: 102mm;
+  font-size: 15px;
+  background-color: #b35959;
+  color: white;
+  margin-right: 6mm;
+}
+
+.disable:hover{
+  background-color: red;
+}
+
+.enable{
+  height: 12mm;
+  width: 102mm;
+  font-size: 15px;
+  background-color: #65b359;
+  color: white;
+  margin-right: 6mm;
+}
+
+.enable:hover{
+  background-color: rgb(17, 255, 0);
+}
+
+
+.delete{
+  height: 12mm;
+  width: 102mm;
+  font-size: 15px;
+  background-color: #b35959;
+  color: white;
+}
+
+.delete:hover{
+  background-color: red;
+}
 
 .scheda{
   width: 210mm;

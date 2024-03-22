@@ -49,6 +49,9 @@ export class UserDetailComponent implements OnInit {
     });
   }
 
+  delete(){
+    console.log(this.userId)
+  }
   
   disable() {
     if (this.user) {

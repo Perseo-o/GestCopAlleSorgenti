@@ -1,14 +1,18 @@
 <div class="body" *ngIf="user">
     <div class="button">
-        <button mat-flat-button class="create-pdf" (click)="convert()"><b>Esporta in pdf</b></button> 
+        <button mat-flat-button class="create-pdf" (click)="convert()"><div class="pdf-div"><mat-icon>cloud_download</mat-icon><b>Esporta in pdf </b></div></button> 
+        
+        <button mat-flat-button class="update" (click)="userUpdate()"><div class="update-div"><mat-icon>edit</mat-icon><b>Aggiorna Dati User</b></div></button>
+        
         <div *ngIf="user.active">
-            <button mat-flat-button class="disable" (click)="disable()"><b>Disabilita user</b></button> 
+            <button mat-flat-button class="disable" (click)="disable()"><div class="pdf-div"><mat-icon>visibility_off</mat-icon><b>Disabilita User</b></div></button> 
         </div>
         <div *ngIf="!user.active">
-            <button mat-flat-button class="enable" (click)="enable()"><b>Riattiva user</b></button> 
+            <button mat-flat-button class="enable" (click)="enable()"><div class="pdf-div"><mat-icon>visibility</mat-icon><b>Riattiva User</b></div></button> 
         </div>
         
-        <button mat-flat-button class="update" (click)="userUpdate()"><b>Aggiorna Dati Utente</b></button>
+        <button mat-flat-button class="delete" (click)="delete()"><div class="pdf-div"><mat-icon>delete</mat-icon><b>Elimina User</b></div></button>
+        
     </div>
     <div class="scheda" id="scheda">
         <div style="display: flex;">
@@ -96,4 +100,3 @@
         
     </div>
 </div>
-<!--<mat-icon>cloud_download</mat-icon> TOODO-->

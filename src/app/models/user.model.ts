@@ -29,6 +29,7 @@ export interface UserDTO {
 }
 
 export enum Site {
+    NULL='NULL',
     COP_SORG_IGL = 'COP_SORG_IGL',
     COP_SORG_MONT = 'COP_SORG_MONT'
 }
