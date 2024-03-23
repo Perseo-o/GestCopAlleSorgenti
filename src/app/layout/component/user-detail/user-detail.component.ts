@@ -5,6 +5,8 @@ import { UserDTO } from '../../../models/user.model';
 import { DatePipe } from '@angular/common';
 // @ts-ignore
 import * as html2pdf from 'html2pdf.js'; // Assicurati che html2pdf.js sia stato installato correttamente e che il percorso sia corretto
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-detail',
@@ -29,7 +31,8 @@ export class UserDetailComponent implements OnInit {
     protected router: Router,
     private route: ActivatedRoute,
     private userService: UserService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -49,10 +52,28 @@ export class UserDetailComponent implements OnInit {
     });
   }
 
-  delete(){
-    console.log(this.userId)
+
+  openDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true; // Impedisce la chiusura del dialog cliccando all'esterno
+    dialogConfig.data = {
+      message: 'Sei sicura/o di voler eliminare: ',
+      name:this.user.name+' '+this.user.surname,
+      userId:this.user.id,
+      root:'userDetailDelete',
+      action: 'ELIMINA',
+      other: 'ANNULLA',
+      backGraund: 'bad'
+    }; // Passa dati al dialog
+
+    const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
+
   }
-  
+
+
+
+
   disable() {
     if (this.user) {
       this.user.active = false;

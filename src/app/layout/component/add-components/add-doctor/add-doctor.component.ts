@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DoctorService } from '../../../../services/doctor.service';
 import { DoctorDTO } from '../../../../models/doctor.model';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogComponent } from '../../dialog/dialog.component';
 
 @Component({
   selector: 'app-add-doctor',
@@ -17,7 +19,8 @@ export class AddDoctorComponent {
     constructor(
       private doctorService: DoctorService,
       private datePipe: DatePipe,
-      private formBuilder: FormBuilder
+      private formBuilder: FormBuilder,
+      public dialog: MatDialog
     ) {}
   
     ngOnInit(): void {
@@ -30,19 +33,22 @@ export class AddDoctorComponent {
         contDetails: ['']
       });
     }
+
+    
+    openDialog(): void {
+      const dialogConfig = new MatDialogConfig();
   
-    add(): void {
       const doctorData: DoctorDTO = this.schedaDoc.value;
-      this.doctorService.create(doctorData).subscribe(
-        (response) => {
-          console.log("Utente creato con successo:", response);
-          // Aggiungi qui eventuali operazioni supplementari dopo la creazione dell'utente
-        },
-        (error) => {
-          console.error("Errore durante la creazione dell'utente:", error);
-          // Gestisci eventuali errori qui
-        }
-      );
+      
+      dialogConfig.data = {
+        message: "L'avvocato sta per venire creato: ",
+        root: 'addLawyer',
+        newUser:doctorData,
+        action: 'CREA',
+        backGraund: 'good'
+      }; 
+      const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
+  
     }
   
   }

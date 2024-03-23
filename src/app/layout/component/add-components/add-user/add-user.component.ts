@@ -7,6 +7,9 @@ import { LawyerService } from '../../../../services/lawyer.service';
 import { LawyerDTO } from '../../../../models/lawyer.model';
 import { DoctorService } from '../../../../services/doctor.service';
 import { DoctorDTO } from '../../../../models/doctor.model';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogComponent } from '../../dialog/dialog.component';
+import { FormDataService } from '../../../../services/form-data-service.service';
 
 @Component({
   selector: 'app-add-user',
@@ -29,17 +32,21 @@ export class AddUserComponent implements OnInit {
   formattedDateIngStrut: string = "";
 
   constructor(
-    private userService: UserService,
+    private formDataService: FormDataService,
     private datePipe: DatePipe,
     private formBuilder: FormBuilder,
     private lawyerService: LawyerService,
-    private doctorService: DoctorService
+    private doctorService: DoctorService,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
     this.initForm();
     this.getAllLawyers();
     this.getAllDoctor();
+    this.formDataService.resetForm$.subscribe(() => {
+      this.resetForm();
+    });
   }
 
 
@@ -109,6 +116,12 @@ formatDates(): void {
     });
   }
 
+  resetForm(): void {
+    this.scheda.reset(); // Resettare il form
+    this.lawyersToAdd = []; // Resettare la lista di avvocati aggiunti
+    this.doctorsToAdd = []; // Resettare la lista di dottori aggiunti
+  }
+
   
   addLawyer(lawyerDTO: LawyerDTO) {
     if(lawyerDTO){
@@ -130,22 +143,24 @@ formatDates(): void {
     this.doctorsToAdd = this.doctorsToAdd.filter((x)=> x.id!=exStr.id);
   }
 
+  openDialog(): void {
+    const dialogConfig = new MatDialogConfig();
 
-
-  add(): void {
     const userData: UserDTO = this.scheda.value;
     userData.doctorDTOList = this.doctorsToAdd;
     userData.lawyerDTOList = this.lawyersToAdd;
-    this.userService.create(userData).subscribe(
-      (response) => {
-        console.log("Utente creato con successo:", response);
-        // Aggiungi qui eventuali operazioni supplementari dopo la creazione dell'utente
-      },
-      (error) => {
-        console.error("Errore durante la creazione dell'utente:", error);
-        // Gestisci eventuali errori qui
-      }
-    );
+    userData.active = true;
+    
+    dialogConfig.data = {
+      message: "L'utente sta per venire creato: ",
+      root: 'addUser',
+      newUser:userData,
+      action: 'CREA',
+      backGraund: 'good'
+    }; 
+    const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
+
   }
+
 
 }

@@ -9,6 +9,8 @@ import { LawyerDTO } from '../../../models/lawyer.model';
 import { LawyerService } from '../../../services/lawyer.service';
 import { DoctorDTO } from '../../../models/doctor.model';
 import { DoctorService } from '../../../services/doctor.service';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-update-user',
@@ -34,7 +36,8 @@ export class UpdateUserComponent implements OnInit {
     private formBuilder: FormBuilder,
     private lawyerService: LawyerService,
     private doctorService: DoctorService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    public dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -130,24 +133,23 @@ export class UpdateUserComponent implements OnInit {
     this.doctorsToAdd = this.doctorsToAdd.filter((x)=> x.id!=doctor.id);
   }
 
-  update(): void {
+  openDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+
     const userData: UserDTO = this.scheda.value;
     userData.id = this.userId;
-    
-
     userData.doctorDTOList = this.doctorsToAdd;
     userData.lawyerDTOList = this.lawyersToAdd;
-    this.userService.update(userData).subscribe(
-      (response) => {
-        console.log("User updated successfully:", response);
-        // Add any additional operations after user update here
-      },
-      (error) => {
-        console.error("Error updating user:", error);
-        // Handle errors here
-      }
-    );
-    
-    this.router.navigate(['GestCopAlleSorgenti/user-detail', this.user.id]);
+
+    dialogConfig.data = {
+      message: "L'utente sta per venire aggiornato: ",
+      root: 'updateUser',
+      newUser:userData,
+      action: 'AGGIORNA',
+      backGraund: 'good'
+    }; 
+    console.log(dialogConfig.data);
+    const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
+
   }
 }

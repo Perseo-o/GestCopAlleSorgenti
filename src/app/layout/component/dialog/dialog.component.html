@@ -1,0 +1,15 @@
+<div class="body">
+
+    <div class="title">{{data.message}}{{data.name}}</div>
+    <div class="button">
+        <ng-container *ngIf="data.backGraund=='bad'; else good">
+            <button mat-raised-button style="background-color: red;" class="delete" (click)="action()" mat-dialog-close>{{data.action}}</button>
+          </ng-container>
+          <ng-template #good>
+            <button mat-raised-button style="background-color: rgb(6, 186, 6);" class="delete" (click)="action()" mat-dialog-close>{{data.action}}</button>
+          </ng-template>
+        <div *ngIf="data.other">
+            <button mat-raised-button class="undo" mat-dialog-close>{{data.other}}</button>
+        </div>
+    </div>
+</div>

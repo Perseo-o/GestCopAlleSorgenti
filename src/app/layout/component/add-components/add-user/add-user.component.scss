@@ -39,6 +39,10 @@
   width: 77mm;
 }
 
+.formaInputText{
+  width: 170mm;
+}
+
 .addButton{
   width: 12mm; 
   margin-left: 5mm; 
@@ -48,4 +52,23 @@
 
 .deleteButt{
   margin-left: 2mm;
+}
+
+.exObject{
+  display: flex; 
+  justify-content: space-between; 
+  width: 170mm;
+}
+
+.add-user-bottom{
+  margin-top: 0;
+  margin-bottom: 20mm;
+  height: 20mm;
+  width: 210mm;
+  font-size: 15px;
+  background-color: #434764;
+  color: white;
+}
+.add-user-bottom:hover{
+  background-color: #3835DE;
 }

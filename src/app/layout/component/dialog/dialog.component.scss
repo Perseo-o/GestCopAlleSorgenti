@@ -1,0 +1,33 @@
+.body{
+    width: 500px;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+}
+
+.title{
+font-size: 20px;
+margin-top: 70px;
+height: 100px;
+}
+
+.button{
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.undo{
+    width: 150px;
+    height: 20mm;
+    background-color: rgb(188, 188, 188);
+    font-size: 20px;
+}
+
+.delete{
+    width: 150px;
+    height: 20mm;
+    font-size: 20px;
+}

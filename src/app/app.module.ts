@@ -20,6 +20,8 @@ import { AddLawyerComponent } from './layout/component/add-components/add-lawyer
 import { AddGeneralComponent } from './layout/component/add-general/add-general.component';
 import { UpdateUserComponent } from './layout/component/update-user/update-user.component';
 import { AddDoctorComponent } from './layout/component/add-components/add-doctor/add-doctor.component';
+import { DialogComponent } from './layout/component/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -34,7 +36,8 @@ import { AddDoctorComponent } from './layout/component/add-components/add-doctor
     AddDoctorComponent,
     AddGeneralComponent,
     UpdateUserComponent,
-    AddDoctorComponent
+    AddDoctorComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import { AddDoctorComponent } from './layout/component/add-components/add-doctor
     MatInputModule, 
     BrowserAnimationsModule, 
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [
     provideClientHydration(),
