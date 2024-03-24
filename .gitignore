@@ -43,3 +43,6 @@ Thumbs.db
 
 # Environments
 src/environments/environment.ts
+
+# Images
+src/assets/images

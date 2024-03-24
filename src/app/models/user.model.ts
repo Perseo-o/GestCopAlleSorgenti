@@ -1,5 +1,6 @@
 
 import { DoctorDTO } from "./doctor.model";
+import { ImageDTO } from "./image.model";
 import { LawyerDTO } from "./lawyer.model";
 
 export interface UserDTO {
@@ -24,6 +25,7 @@ export interface UserDTO {
     legalSituation: String;
     active: boolean;
     note: String;
+    imageDTO: ImageDTO;
     lawyerDTOList: LawyerDTO[];
     doctorDTOList: DoctorDTO[];
 }

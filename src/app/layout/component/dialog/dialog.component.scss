@@ -1,33 +1,59 @@
 .body{
-    width: 500px;
-    height: 400px;
+    width: 370px;
+    height: 250px;
     display: flex;
     justify-content: center;
     align-items: start;
     flex-wrap: wrap;
 }
 
-.title{
-font-size: 20px;
-margin-top: 70px;
-height: 100px;
+.icon{
+    height: 60px;
+    width: 60px;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 145px -10px 145px;
 }
 
-.button{
-    width: 400px;
+.title{
+    display: grid;
+    font-size: 20px;
+    margin-top: -10px;
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+.message{
+margin-bottom: 8px;
+}
+
+.name{
+    margin-bottom: 8px;
+}
+
+.message1{
+    margin-bottom: 8px;
+}
+
+.buttons{
+    width: 300px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    margin-bottom: -10px;
 }
 
 .undo{
-    width: 150px;
-    height: 20mm;
+    margin-left: 20px;
+    width: 130px;
+    height: 10mm;
     background-color: rgb(188, 188, 188);
     font-size: 20px;
 }
 
 .delete{
-    width: 150px;
-    height: 20mm;
+    width: 130px;
+    height: 10mm;
     font-size: 20px;
 }

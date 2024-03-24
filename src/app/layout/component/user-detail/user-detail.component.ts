@@ -59,6 +59,7 @@ export class UserDetailComponent implements OnInit {
     dialogConfig.disableClose = true; // Impedisce la chiusura del dialog cliccando all'esterno
     dialogConfig.data = {
       message: 'Sei sicura/o di voler eliminare: ',
+      message1: "L'eliminazione sarà permanente",
       name:this.user.name+' '+this.user.surname,
       userId:this.user.id,
       root:'userDetailDelete',

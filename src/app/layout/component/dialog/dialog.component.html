@@ -1,12 +1,21 @@
 <div class="body">
+  
+  <ng-container *ngIf="data.backGraund=='bad'; else good0">
+    <div class="icon" style="background-color: red;"> <mat-icon style="color: white;">delete</mat-icon></div>
+  </ng-container>
+  <ng-template #good0>
+    <div class="icon" style="background-color: rgb(6, 186, 6)"> <mat-icon style="color: white;">edit</mat-icon></div>
+  </ng-template>
 
-    <div class="title">{{data.message}}{{data.name}}</div>
-    <div class="button">
+
+    <div class="title"><div class="message">{{data.message}}</div><div class="name">{{data.name}}</div><div class="message1">{{data.message1}}</div></div>
+    
+    <div class="buttons">
         <ng-container *ngIf="data.backGraund=='bad'; else good">
-            <button mat-raised-button style="background-color: red;" class="delete" (click)="action()" mat-dialog-close>{{data.action}}</button>
+            <button mat-raised-button style="background-color: red; color: white;" class="delete" (click)="action()" mat-dialog-close>{{data.action}}</button>
           </ng-container>
           <ng-template #good>
-            <button mat-raised-button style="background-color: rgb(6, 186, 6);" class="delete" (click)="action()" mat-dialog-close>{{data.action}}</button>
+            <button mat-raised-button style="background-color: rgb(6, 186, 6); width: 280px;" class="delete" (click)="action()" mat-dialog-close>{{data.action}}</button>
           </ng-template>
         <div *ngIf="data.other">
             <button mat-raised-button class="undo" mat-dialog-close>{{data.other}}</button>
