@@ -11,6 +11,8 @@ import { DoctorDTO } from '../../../models/doctor.model';
 import { DoctorService } from '../../../services/doctor.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { ImageService } from '../../../services/image.service';
+import { ImageDTO } from '../../../models/image.model';
 
 @Component({
   selector: 'app-update-user',
@@ -19,6 +21,9 @@ import { DialogComponent } from '../dialog/dialog.component';
 })
 export class UpdateUserComponent implements OnInit {
   @Input() userId!: number;
+  photo!:File;
+
+  file:any=null;
 
   scheda!: FormGroup;
   lawyers: LawyerDTO[] = [];
@@ -37,7 +42,8 @@ export class UpdateUserComponent implements OnInit {
     private lawyerService: LawyerService,
     private doctorService: DoctorService,
     private route: ActivatedRoute,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private imageService: ImageService
   ) {}
 
   ngOnInit(): void {
@@ -107,6 +113,7 @@ export class UpdateUserComponent implements OnInit {
       legalSituation: [''],
       note: [''],
       active:true,
+      imageDTO:[''],
       lawyerDTOList: this.lawyersToAdd,
       doctorDTOList: this.doctorsToAdd
     });
@@ -148,8 +155,30 @@ export class UpdateUserComponent implements OnInit {
       action: 'AGGIORNA',
       backGraund: 'good'
     }; 
-    console.log(dialogConfig.data);
+    
+    if(this.photo){
+      
+    this.imageService.create(this.photo).subscribe({
+      next: (res: UserDTO[]) => {
+        if (res) {
+          dialogConfig.data.newUser.imageDTO=res;
+        }
+      },
+      error: (error) => {
+        console.log('Errare è umano:', error);
+      }
+    });
+    }
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
 
   }
+
+  
+  onFileSelected(event: any) {
+    this.file = event.target.files[0];
+   if (this.file) {
+     this.photo=this.file;
+   }
+ }
+
 }

@@ -162,4 +162,8 @@
             </form>
         </div>
     </div>
+    <span *ngIf="file" class="file-name">{{file.name}}</span>
+    <button type="buttonFile"  class="file" mat-raised-button (click)="fileInput.click()">Aggiungi un Immagine</button>
+    <input hidden (change)="onFileSelected($event)"  #fileInput type="file" accept="image/*">
+
 </div>

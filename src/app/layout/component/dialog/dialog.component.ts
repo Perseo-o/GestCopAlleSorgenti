@@ -6,6 +6,8 @@ import { AddUserComponent } from '../add-components/add-user/add-user.component'
 import { FormDataService } from '../../../services/form-data.service';
 import { LawyerService } from '../../../services/lawyer.service';
 import { DoctorService } from '../../../services/doctor.service';
+import { ImageService } from '../../../services/image.service';
+import { ImageDTO } from '../../../models/image.model';
 
 @Component({
   selector: 'app-dialog',
@@ -23,7 +25,8 @@ export class DialogComponent {
     protected router: Router,
     private formDataService: FormDataService,
     private lawyerService: LawyerService,
-    private doctorService: DoctorService
+    private doctorService: DoctorService,
+    private imageService: ImageService
   ) {}
   
   openDialog(): void {
@@ -36,6 +39,7 @@ export class DialogComponent {
   }
 
   action(){
+
     switch (this.data.root) {
       case 'userDetailDelete':
         this.userService.delete(this.data.userId).subscribe(

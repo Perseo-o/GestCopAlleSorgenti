@@ -166,24 +166,16 @@ formatDates(): void {
     }; 
 
     this.imageService.create(this.photo).subscribe({
-      next: (response) => {
-        // Gestire la risposta dell'API qui, se necessario
-        console.log('Risposta dal server:', response);
+      next: (res: UserDTO[]) => {
+        if (res) {
+          dialogConfig.data.newUser.imageDTO=res;
+        }
       },
       error: (error) => {
-        // Gestire gli eventuali errori qui
-        console.error('Errore durante il caricamento dell\'immagine:', error);
+        console.log('Errare è umano:', error);
       }
     });
 
-    this.imageService.readLast().subscribe(
-      (imageDTO: ImageDTO) => {
-        userData.imageDTO = imageDTO;
-      },
-      (error) => {
-        console.error('Errore durante il recupero dell\'immagine', error);
-      }
-    );
 
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
 

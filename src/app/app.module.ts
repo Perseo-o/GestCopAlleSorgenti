@@ -37,7 +37,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     AddGeneralComponent,
     UpdateUserComponent,
     AddDoctorComponent,
-    DialogComponent
+    DialogComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
