@@ -5,7 +5,6 @@ import org.springframework.stereotype.Component;
 import com.nuraghenexus.GesCopAlleSorgenti.dto.UserDTO;
 import com.nuraghenexus.GesCopAlleSorgenti.model.User;
 
-import java.time.LocalDate;
 
 @Component
 public class UserConverter extends AbstractConverter<User, UserDTO> {
@@ -14,6 +13,8 @@ public class UserConverter extends AbstractConverter<User, UserDTO> {
     private LawyerConverter lawyerConverter;
     @Autowired
     private DoctorConverter doctorConverter;
+    @Autowired
+    private ImageConverter imageConverter;
 
     @Override
     public User toEntity(UserDTO userDTO) {
@@ -41,6 +42,7 @@ public class UserConverter extends AbstractConverter<User, UserDTO> {
                     userDTO.getLegalSituation(),
                     userDTO.getActive(),
                     userDTO.getNote(),
+                    imageConverter.toEntity(userDTO.getImageDTO()),
                     lawyerConverter.toEntityList(userDTO.getLawyerDTOList()),
                     doctorConverter.toEntityList(userDTO.getDoctorDTOList()));
         }
@@ -73,6 +75,7 @@ public class UserConverter extends AbstractConverter<User, UserDTO> {
                     user.getLegalSituation(),
                     user.getActive(),
                     user.getNote(),
+                    imageConverter.toDTO(user.getImage()),
                     lawyerConverter.toDTOList(user.getLawyerList()),
                     doctorConverter.toDTOList(user.getDoctorList()));
         }

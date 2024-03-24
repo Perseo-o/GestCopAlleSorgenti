@@ -36,6 +36,9 @@ public class UserDTO {
     private String legalSituation;
     private Boolean active;
     private String note;
+
+    private ImageDTO imageDTO;
+
     private List<LawyerDTO> lawyerDTOList;
 
     private List<DoctorDTO> doctorDTOList;

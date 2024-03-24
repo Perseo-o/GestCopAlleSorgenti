@@ -2,14 +2,14 @@ package com.nuraghenexus.GesCopAlleSorgenti.converter;
 
 import com.nuraghenexus.GesCopAlleSorgenti.dto.ImageDTO;
 import com.nuraghenexus.GesCopAlleSorgenti.model.Image;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class ImageConverter {
 
-    @Autowired
-    private UserConverter userConverter;
 
     public Image toEntity(ImageDTO imageDTO) {
         Image image = null;
@@ -18,8 +18,7 @@ public class ImageConverter {
                     imageDTO.getId(),
                     imageDTO.getName(),
                     imageDTO.getType(),
-                    imageDTO.getFilePath(),
-                    userConverter.toEntity(imageDTO.getUserDTO())
+                    imageDTO.getFilePath()
             );
         }
         return image;
@@ -32,10 +31,33 @@ public class ImageConverter {
                     image.getId(),
                     image.getName(),
                     image.getType(),
-                    image.getFilePath(),
-                    userConverter.toDTO(image.getUser())
+                    image.getFilePath()
             );
         }
         return imageDTO;
+    }
+
+    public List<Image> toEntityList (Iterable<ImageDTO> listDTO) {
+        List<Image> list = new ArrayList<>();
+
+        if(listDTO != null) {
+            for (ImageDTO dto:listDTO) {
+                Image entity = toEntity(dto);
+                list.add(entity);
+            }
+        }
+        return list;
+    }
+
+    public List<ImageDTO> toDTOList (Iterable<Image> listEntity) {
+        List<ImageDTO> list = new ArrayList<>();
+
+        if(listEntity != null) {
+            for (Image entity:listEntity) {
+                ImageDTO dto = toDTO(entity);
+                list.add(dto);
+            }
+        }
+        return list;
     }
 }

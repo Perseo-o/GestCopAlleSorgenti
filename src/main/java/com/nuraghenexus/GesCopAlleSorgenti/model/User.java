@@ -42,6 +42,10 @@ public class User{
     private String legalSituation;
     private Boolean active;
     private String note;
+
+    @OneToOne
+    private Image image;
+
     @ManyToMany
     private List<Lawyer> lawyerList;
 

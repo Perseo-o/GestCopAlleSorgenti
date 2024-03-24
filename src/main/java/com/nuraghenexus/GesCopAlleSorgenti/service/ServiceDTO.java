@@ -5,13 +5,13 @@ import java.util.List;
 
 public interface ServiceDTO<DTO> {
 
-    public List<DTO> getAll();
+     List<DTO> getAll();
 
-    public DTO create (DTO dto);
+     DTO create (DTO dto);
 
-    public DTO read(Long id);
+     DTO read(Long id);
 
-    public DTO update (DTO dto);
+     DTO update (DTO dto);
 
-    public String delete (Long id);
+     boolean delete (Long id);
 }

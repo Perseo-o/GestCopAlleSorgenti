@@ -35,16 +35,14 @@ public abstract class AbstractService<Entity, DTO> implements ServiceDTO<DTO> {
     }
 
     @Override
-    public String delete(Long id) {
-        try {
+    public boolean delete(Long id) {
+
             if (repository.existsById(id)) {
                 repository.deleteById(id);
-                return "eliminato con successo";
+                return true;
             } else {
-                return "utente non trovato";
+                return false;
             }
-        }catch (Exception e){}
-        return "missione fallita, chiedete a marci";
     }
 
 }

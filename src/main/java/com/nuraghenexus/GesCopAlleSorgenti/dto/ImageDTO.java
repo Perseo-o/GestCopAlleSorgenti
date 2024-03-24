@@ -13,6 +13,5 @@ public class ImageDTO {
     private String name;
     private String type;
     private String filePath;
-    private UserDTO userDTO;
 
 }

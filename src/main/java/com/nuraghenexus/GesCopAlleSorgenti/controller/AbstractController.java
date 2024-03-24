@@ -25,9 +25,7 @@ public abstract class AbstractController<DTO> {
 
 
     @PostMapping("create")
-    public DTO create(@RequestBody DTO dto) {
-        System.out.println(dto);return service.create(dto);
-    }
+    public DTO create(@RequestBody DTO dto) {return service.create(dto); }
 
     @GetMapping("read")
     public DTO read(@RequestParam("id") Long id) {
@@ -41,7 +39,7 @@ public abstract class AbstractController<DTO> {
 
 
     @DeleteMapping("delete")
-    public String delete(@RequestParam("id") Long id) {
+    public boolean delete(@RequestParam("id") Long id) {
         return service.delete(id);
     }
 }
