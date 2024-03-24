@@ -2,14 +2,15 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserDTO } from '../../../../models/user.model';
-import { UserService } from '../../../../services/user.service';
 import { LawyerService } from '../../../../services/lawyer.service';
 import { LawyerDTO } from '../../../../models/lawyer.model';
 import { DoctorService } from '../../../../services/doctor.service';
 import { DoctorDTO } from '../../../../models/doctor.model';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DialogComponent } from '../../dialog/dialog.component';
-import { FormDataService } from '../../../../services/form-data-service.service';
+import { FormDataService } from '../../../../services/form-data.service';
+import { ImageService } from '../../../../services/image.service';
+import { ImageDTO } from '../../../../models/image.model';
 
 @Component({
   selector: 'app-add-user',
@@ -18,6 +19,10 @@ import { FormDataService } from '../../../../services/form-data-service.service'
 })
 export class AddUserComponent implements OnInit { 
   scheda!: FormGroup;
+
+  photo!:File;
+
+  file:any=null;
 
   lawyers: LawyerDTO[] = [];
   lawyersToAdd: LawyerDTO[] = [];
@@ -37,7 +42,8 @@ export class AddUserComponent implements OnInit {
     private formBuilder: FormBuilder,
     private lawyerService: LawyerService,
     private doctorService: DoctorService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private imageService: ImageService
   ) {}
 
   ngOnInit(): void {
@@ -158,8 +164,36 @@ formatDates(): void {
       action: 'CREA',
       backGraund: 'good'
     }; 
+
+    this.imageService.create(this.photo).subscribe({
+      next: (response) => {
+        // Gestire la risposta dell'API qui, se necessario
+        console.log('Risposta dal server:', response);
+      },
+      error: (error) => {
+        // Gestire gli eventuali errori qui
+        console.error('Errore durante il caricamento dell\'immagine:', error);
+      }
+    });
+
+    this.imageService.readLast().subscribe(
+      (imageDTO: ImageDTO) => {
+        userData.imageDTO = imageDTO;
+      },
+      (error) => {
+        console.error('Errore durante il recupero dell\'immagine', error);
+      }
+    );
+
     const dialogRef = this.dialog.open(DialogComponent, dialogConfig);
 
+  }
+
+  onFileSelected(event: any) {
+     this.file = event.target.files[0];
+    if (this.file) {
+      this.photo=this.file;
+    }
   }
 
 

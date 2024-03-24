@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { UserService } from '../../../services/user.service';
 import { Router } from '@angular/router';
 import { AddUserComponent } from '../add-components/add-user/add-user.component';
-import { FormDataService } from '../../../services/form-data-service.service';
+import { FormDataService } from '../../../services/form-data.service';
 import { LawyerService } from '../../../services/lawyer.service';
 import { DoctorService } from '../../../services/doctor.service';
 

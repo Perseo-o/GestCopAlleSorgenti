@@ -1,10 +1,8 @@
 <div class="card" (click)="goToDetail()">
 
 
-  <ng-container *ngIf="user.imageDTO && (user.imageDTO.name === user.name + ' ' + user.surname + '.png' || user.imageDTO.name === user.name +''+ user.surname + '.png'); else dog">
-
-    <!--<div class="image" [style.background]="'url('+user.imageDTO.filePath+') no-repeat center / cover'"></div>.name==user.name+' '+user.surname -->
-    <div class="image" [style.background]="'url(../../../../assets/images/'+user.name+user.surname+'.png) no-repeat center / cover'"></div> 
+  <ng-container *ngIf="user.imageDTO; else dog">
+    <div class="image" [style.background]="'url(../../../../assets/images/'+user.imageDTO.name+') no-repeat center / cover'"></div> 
   </ng-container>
   <ng-template #dog>
     <div class="image" style="background: url('https://material.angular.io/assets/img/examples/shiba1.jpg') no-repeat center / cover;"></div> 

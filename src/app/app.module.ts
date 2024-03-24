@@ -53,7 +53,7 @@ import { MatDialogModule } from '@angular/material/dialog';
   ],
   providers: [
     provideClientHydration(),
-    DatePipe
+    DatePipe,
   ],
   bootstrap: [AppComponent]
 })
